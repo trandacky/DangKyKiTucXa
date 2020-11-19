@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,7 +46,7 @@ public class NguoiDung {
 	@Column(name = "gioiTinh")
 	private boolean gioiTinh;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nguoiDung")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
 	private List<DangKyGiuong> dangKyGiuong;
 	// map qua biến nguoiDung bên DangKyGiuong
 	

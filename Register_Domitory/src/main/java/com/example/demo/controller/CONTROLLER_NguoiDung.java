@@ -3,16 +3,19 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.NguoiDung;
 import com.example.demo.service.SERVICE_NguoiDung;
-
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping("/nguoidung")
 @RestController
 public class CONTROLLER_NguoiDung {
 	
@@ -23,17 +26,17 @@ public class CONTROLLER_NguoiDung {
 		this.service_NguoiDung=service_NguoiDung;
 	}
 	
-	@GetMapping("/view/nguoidung")
+	@GetMapping("/view")
 	public List<NguoiDung> get() {
 		return service_NguoiDung.getAll();
 	}
 
-	@GetMapping("/view/nguoidung/{id}")
+	@GetMapping("/view/{id}")
 	public Optional<NguoiDung> getid(@PathVariable Long id) {
 		return service_NguoiDung.getByID(id);
 	}
 
-	@PostMapping("/create/nguoidung")
+	@PostMapping("/create")
 	public NguoiDung create() {
 		NguoiDung nguoiDung = new NguoiDung();
 		nguoiDung.setTenDangNhap(123);
@@ -44,7 +47,7 @@ public class CONTROLLER_NguoiDung {
 
 	}
 
-	@PutMapping("/update/nguoidung/{id}")
+	@PutMapping("/update/{id}")
 	public Optional<Object> updateCauHoi(@PathVariable Long id) {
 		NguoiDung nguoiDung = new NguoiDung();
 		nguoiDung.setTenDangNhap(id);
@@ -54,7 +57,7 @@ public class CONTROLLER_NguoiDung {
 
 	}
 
-	@DeleteMapping("/delete/cauhoi/{id}")
+	@DeleteMapping("/delete/{id}")
 	public Optional<Object> deleteCauHoi(@PathVariable long id) {
 
 		return service_NguoiDung.delete(id);

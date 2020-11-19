@@ -17,22 +17,22 @@ public class DangKyGiuong {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idDk;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "tenDangNhap", nullable = false)
 	private NguoiDung nguoiDung;
 
 	/*
-	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * @ManyToOne
 	 * 
 	 * @JoinColumn(name="idKhu", nullable = false) private Khu khu;
 	 */
 	/*
-	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * @ManyToOne
 	 * 
 	 * @JoinColumn(name="idPhong", nullable = false) private Phong phong;
 	 */
 	/*
-	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * @ManyToOne
 	 * 
 	 * @JoinColumn(name="idGiuong", nullable = false) private Giuong giuong;
 	 */
