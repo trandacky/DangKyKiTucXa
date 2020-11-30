@@ -23,7 +23,7 @@ public class NguoiDung {
 	private String matKhau;
 
 	@Column(name = "tinhTrang")
-	private boolean tinhtrang;
+	private boolean tinhTrang;
 
 	@Column(name = "quyen")
 	private String quyen;
@@ -66,12 +66,12 @@ public class NguoiDung {
 		this.matKhau = matKhau;
 	}
 
-	public boolean isTinhtrang() {
-		return tinhtrang;
+	public boolean isTinhTrang() {
+		return tinhTrang;
 	}
 
-	public void setTinhtrang(boolean tinhtrang) {
-		this.tinhtrang = tinhtrang;
+	public void setTinhtrang(boolean tinhTrang) {
+		this.tinhTrang = tinhTrang;
 	}
 
 	public String isQuyen() {
