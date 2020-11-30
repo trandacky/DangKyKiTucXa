@@ -18,33 +18,26 @@
 		<table class="table table-striped">
 			<tr>
 				<th>Tên đăng nhập</th>
-				<th>Mật khẩu</th>
-				<th>Giới tính</th>
-
 				<th>Quyền</th>
 				<th>Họ tên</th>
 				<th>Ngày tháng năm sinh</th>
-				<th>Quê quán</th>
-
 				<th>Số điện thoại</th>
-				<th>Email</th>
 				<th>Tình trạng</th>
+				<th>Xem chi tiết</th>
 
 			</tr>
 			<c:forEach items="${ListNguoiDung}" var="nguoiDung">
 				<tr>
-					<td>${nguoiDung.tenDangNhap}</td>
-					<td>${nguoiDung.matKhau}</td>
-					<td>${nguoiDung.gioiTinh}</td>
+					<td><a href="https://abc.com">${nguoiDung.tenDangNhap}</a></td>
 					<td>${nguoiDung.quyen}</td>
 					<td>${nguoiDung.hoTen}</td>
 					<td>${nguoiDung.ngayThangNamSinh}</td>
-					<td>${nguoiDung.queQuan}</td>
 					<td>${nguoiDung.soDienThoai}</td>
-					<td>${nguoiDung.email}</td>
 
-					<td><button type="button" style="${nguoiDung.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
+					<td><button type="button"
+							style="${nguoiDung.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
 							class="btn btn-primary">${nguoiDung.tinhTrang}</button></td>
+					<td><button type="button" class="btn btn-primary">Chọn</button></td>
 				</tr>
 			</c:forEach>
 		</table>
