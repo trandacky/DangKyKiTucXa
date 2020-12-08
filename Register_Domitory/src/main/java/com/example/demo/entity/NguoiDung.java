@@ -1,60 +1,54 @@
 package com.example.demo.entity;
 
-import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * A NguoiDung.
+ */
 @Entity
-@Table(name = "NguoiDung")
-public class NguoiDung {
-	@Id
-	@Column(name = "tenDangNhap")
-	private long tenDangNhap;
+@Table(name = "nguoi_dung")
+public class NguoiDung{
+    @Id
+    private String tenDangNhap;
 
-	@Column(name = "matKhau")
-	private String matKhau;
+    @Column(name = "mat_khau")
+    private String matKhau;
 
-	@Column(name = "tinhTrang")
-	private boolean tinhTrang;
+    @Column(name = "quyen")
+    private Integer quyen;
 
-	@Column(name = "quyen")
-	private String quyen;
-	
-	@Column(name = "hoTen")
-	private String hoTen;
+    @Column(name = "ho_ten")
+    private String hoTen;
 
-	@Column(name = "ngayThangNamSinh")
-	private Date ngayThangNamSinh;
-	
-	@Column(name = "queQuan")
-	private String queQuan;
-	
-	@Column(name = "soDienThoai")
-	private String soDienThoai;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "gioiTinh")
-	private boolean gioiTinh;
+    @Column(name = "ngay_thang_nam_sinh")
+    private LocalDate ngayThangNamSinh;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "nguoiDung")
-	private List<DangKyGiuong> dangKyGiuong;
-	// map qua biến nguoiDung bên DangKyGiuong
-	
-	public long getTenDangNhap() {
+    @Column(name = "que_quan")
+    private String queQuan;
+
+    @Column(name = "so_dien_thoai_lien_he")
+    private String soDienThoaiLienHe;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "gioi_tinh")
+    private Boolean gioiTinh;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "tenDangNhap")
+    private Set<DangKyGiuong> dangKyGiuongs = new HashSet<>();
+
+	public String getTenDangNhap() {
 		return tenDangNhap;
 	}
 
-	public void setTenDangNhap(long tenDangNhap) {
+	public void setTenDangNhap(String tenDangNhap) {
 		this.tenDangNhap = tenDangNhap;
 	}
 
@@ -66,31 +60,12 @@ public class NguoiDung {
 		this.matKhau = matKhau;
 	}
 
-	public boolean isTinhTrang() {
-		return tinhTrang;
-	}
-
-	public void setTinhtrang(boolean tinhTrang) {
-		this.tinhTrang = tinhTrang;
-	}
-
-	public String isQuyen() {
+	public Integer getQuyen() {
 		return quyen;
 	}
 
-	public void setQuyen(String quyen) {
+	public void setQuyen(Integer quyen) {
 		this.quyen = quyen;
-	}
-
-	
-
-	/*
-	 * one to many không nên để hàm get để tránh khi get ra mình gặp đệ quy
-	 * public List<DangKyGiuong> getDangKyGiuong() { return dangKyGiuong; }
-	 */
-
-	public void setDangKyGiuong(List<DangKyGiuong> dangKyGiuong) {
-		this.dangKyGiuong = dangKyGiuong;
 	}
 
 	public String getHoTen() {
@@ -101,11 +76,11 @@ public class NguoiDung {
 		this.hoTen = hoTen;
 	}
 
-	public Date getNgayThangNamSinh() {
+	public LocalDate getNgayThangNamSinh() {
 		return ngayThangNamSinh;
 	}
 
-	public void setNgayThangNamSinh(Date ngayThangNamSinh) {
+	public void setNgayThangNamSinh(LocalDate ngayThangNamSinh) {
 		this.ngayThangNamSinh = ngayThangNamSinh;
 	}
 
@@ -117,12 +92,12 @@ public class NguoiDung {
 		this.queQuan = queQuan;
 	}
 
-	public String getSoDienThoai() {
-		return soDienThoai;
+	public String getSoDienThoaiLienHe() {
+		return soDienThoaiLienHe;
 	}
 
-	public void setSoDienThoai(String soDienThoai) {
-		this.soDienThoai = soDienThoai;
+	public void setSoDienThoaiLienHe(String soDienThoaiLienHe) {
+		this.soDienThoaiLienHe = soDienThoaiLienHe;
 	}
 
 	public String getEmail() {
@@ -133,18 +108,21 @@ public class NguoiDung {
 		this.email = email;
 	}
 
-	public boolean isGioiTinh() {
+	public Boolean getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(boolean gioiTinh) {
+	public void setGioiTinh(Boolean gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public String getQuyen() {
-		return quyen;
+	public Set<DangKyGiuong> getDangKyGiuongs() {
+		return dangKyGiuongs;
 	}
 
-	
+	public void setDangKyGiuongs(Set<DangKyGiuong> dangKyGiuongs) {
+		this.dangKyGiuongs = dangKyGiuongs;
+	}
 
+    
 }

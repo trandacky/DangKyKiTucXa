@@ -12,32 +12,80 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Welcome</h1>
-	<h2>${message}</h2>
+	<div class="content form-control">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+
+					<div class="form-group">
+						<label>Tên đăng nhập: </label> <input class="form-control">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Password: </label> <input class="form-control"
+							type="password">
+					</div>
+				</div>
+				<div class="col-md-4">
+
+					<div class="form-group">
+						<label>Họ tên: </label> <input class="form-control">
+					</div>
+				</div>
+
+				<div class="col-md-1.5">
+					<div class="form-group">
+						<label>Quyền: </label> <select class="form-control"
+							id="selectquyen">
+							<option id="optionadmin">ADMIN</option>
+							<option id="optionuser">USER</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="clearfix" style="float: right;">
+						<button class="btn btn-primary pull-right" type="button"
+							onclick="#">Thêm</button>
+						<button class="btn btn-primary pull-right" type="button"
+							onclick="#">Cập nhật</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<form class="form-inline my-2 my-lg-0 form-control">
+			<input class="form-control mr-sm-2" type="search"
+				placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="button"
+				onclick="#">Search</button>
+
+		</form>
+	</div>
+
 	<div class="text-center">
 		<table class="table table-striped">
 			<tr>
 				<th>Tên đăng nhập</th>
-				<th>Quyền</th>
 				<th>Họ tên</th>
 				<th>Ngày tháng năm sinh</th>
 				<th>Số điện thoại</th>
-				<th>Tình trạng</th>
-				<th>Xem chi tiết</th>
+				<th>Quyền</th>
 
 			</tr>
 			<c:forEach items="${ListNguoiDung}" var="nguoiDung">
 				<tr>
-					<td><a href="https://abc.com">${nguoiDung.tenDangNhap}</a></td>
-					<td>${nguoiDung.quyen}</td>
+					<td><a href="" onclick="abc()">${nguoiDung.tenDangNhap}</a></td>
 					<td>${nguoiDung.hoTen}</td>
 					<td>${nguoiDung.ngayThangNamSinh}</td>
-					<td>${nguoiDung.soDienThoai}</td>
+					<td>${nguoiDung.soDienThoaiLienHe}</td>
 
 					<td><button type="button"
-							style="${nguoiDung.tinhTrang==true ? 'background-color: lightgreen':'background-color: red'}"
-							class="btn btn-primary">${nguoiDung.tinhTrang}</button></td>
-					<td><button type="button" class="btn btn-primary">Chọn</button></td>
+							style="${nguoiDung.quyen==0 ? 'background-color: red':'background-color: lightgreen'}"
+							class="btn btn-primary">${nguoiDung.quyen}</button></td>
 				</tr>
 			</c:forEach>
 		</table>

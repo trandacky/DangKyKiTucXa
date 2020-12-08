@@ -32,20 +32,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="quanlytaikhoan">Quản lý tài khoản</a>
+					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="quanlytaikhoan">Trang chủ</a>
 					</li>
-					<li class="nav-item"><a class="nav-link ${activephong}" href="quanlyphong">Quản lý phòng</a></li>
-					<li class="nav-item"><a class="nav-link ${activekhu}" href="#">Quản lý khu</a>
-					<li class="nav-item"><a class="nav-link ${activedangky}" href="#">Mở đăng ký</a>
-					<li class="nav-item"><a class="nav-link ${active5}" href="#">gì gì đó</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					
-				</form>
+				
 				<div class="topright">
 				<label >tên tài khoản của admin hay của ai đó</label>
 				<button type="button"  class="btn btn-primary">Đăng xuất</button>

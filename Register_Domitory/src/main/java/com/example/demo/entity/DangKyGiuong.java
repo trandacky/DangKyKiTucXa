@@ -1,79 +1,99 @@
 package com.example.demo.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
+
+/**
+ * A DangKyGiuong.
+ */
 @Entity
-@Table(name="DangKyGiuong")
-public class DangKyGiuong {
-	@Id
-	@Column(name = "idDk")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idDk;
+@Table(name = "dang_ky_giuong")
+public class DangKyGiuong{
 
-	@ManyToOne
-	@JoinColumn(name = "tenDangNhap", nullable = false)
-	private NguoiDung nguoiDung;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idDK;
 
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name="idKhu", nullable = false) private Khu khu;
-	 */
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name="idPhong", nullable = false) private Phong phong;
-	 */
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name="idGiuong", nullable = false) private Giuong giuong;
-	 */
+    @Column(name = "hoc_ky")
+    private Integer hocKy;
 
-	@Column(name = "hocKy")
-	private String hocKy;
+    @Column(name = "nam_hoc")
+    private Integer namHoc;
 
-	@Column(name = "namHoc")
-	private int namHoc;
+    @ManyToOne
+    @JoinColumn(name = "idKhu", nullable = false)
+    private Khu idKhu;
 
-	public long getIdDk() {
-		return idDk;
+    @ManyToOne
+    @JoinColumn(name = "tenDangNhap", nullable = false)
+    private NguoiDung tenDangNhap;
+
+    @ManyToOne
+    @JoinColumn(name = "idGiuong", nullable = false)
+    private Giuong idGiuong;
+
+    @ManyToOne
+    @JoinColumn(name = "idPhong", nullable = false)
+    private Phong idPhong;
+
+	public Long getIdDK() {
+		return idDK;
 	}
 
-	public void setIdDk(long idDk) {
-		this.idDk = idDk;
+	public void setIdDK(Long idDK) {
+		this.idDK = idDK;
 	}
 
-	public NguoiDung getNguoiDung() {
-		return nguoiDung;
-	}
-
-	public void setNguoiDung(NguoiDung nguoiDung) {
-		this.nguoiDung = nguoiDung;
-	}
-
-	public String getHocKy() {
+	public Integer getHocKy() {
 		return hocKy;
 	}
 
-	public void setHocKy(String hocKy) {
+	public void setHocKy(Integer hocKy) {
 		this.hocKy = hocKy;
 	}
 
-	public int getNamHoc() {
+	public Integer getNamHoc() {
 		return namHoc;
 	}
 
-	public void setNamHoc(int namHoc) {
+	public void setNamHoc(Integer namHoc) {
 		this.namHoc = namHoc;
 	}
-	
-	
+
+	public Khu getIdKhu() {
+		return idKhu;
+	}
+
+	public void setIdKhu(Khu idKhu) {
+		this.idKhu = idKhu;
+	}
+
+	public NguoiDung getTenDangNhap() {
+		return tenDangNhap;
+	}
+
+	public void setTenDangNhap(NguoiDung tenDangNhap) {
+		this.tenDangNhap = tenDangNhap;
+	}
+
+	public Giuong getIdGiuong() {
+		return idGiuong;
+	}
+
+	public void setIdGiuong(Giuong idGiuong) {
+		this.idGiuong = idGiuong;
+	}
+
+	public Phong getIdPhong() {
+		return idPhong;
+	}
+
+	public void setIdPhong(Phong idPhong) {
+		this.idPhong = idPhong;
+	}
+
+   
+
 }

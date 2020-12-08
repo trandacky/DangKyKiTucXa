@@ -25,7 +25,7 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 	}
 
 	@Override
-	public Optional<NguoiDung> getByID(long id) {
+	public Optional<NguoiDung> getByID(String id) {
 		// TODO Auto-generated method stub
 		return repository_NguoiDung.findById(id);
 	}
@@ -45,7 +45,7 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 	}
 
 	@Override
-	public Optional<Object> delete(Long id) {
+	public Optional<Object> delete(String id) {
 		return repository_NguoiDung.findById(id).map(nguoidung -> {
 			repository_NguoiDung.delete(nguoidung);
 			return ResponseEntity.ok().build();
