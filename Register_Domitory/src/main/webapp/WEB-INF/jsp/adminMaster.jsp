@@ -22,28 +22,7 @@
 
 </style>
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarTogglerDemo01"
-				aria-controls="navbarTogglerDemo01" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="quanlytaikhoan">Trang chủ</a>
-					</li>
-					</li>
-				</ul>
-				
-				<div class="topright">
-				<label >tên tài khoản của admin hay của ai đó</label>
-				<button type="button"  class="btn btn-primary">Đăng xuất</button>
-				</div>
-			</div>
-		</nav>
-	</div>
+	<c:import url="headerAdmin.jsp"/>
 	<c:import url="${page}"/>
 </body>
 </html>
