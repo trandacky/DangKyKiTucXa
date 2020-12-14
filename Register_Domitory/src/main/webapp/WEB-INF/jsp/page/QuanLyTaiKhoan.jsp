@@ -34,12 +34,47 @@
 					</div>
 				</div>
 
-				<div class="col-md-1.5">
+				<div class="col-md-2">
 					<div class="form-group">
 						<label>Quyền: </label> <select class="form-control"
 							id="selectquyen">
+							<option id="optionuser" value=0>DISABLE</option>
 							<option id="optionadmin">ADMIN</option>
 							<option id="optionuser">USER</option>
+
+						</select>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+
+					<div class="form-group">
+						<label>Email: </label> <input class="form-control">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>Quê quán: </label> <input class="form-control">
+					</div>
+				</div>
+				<div class="col-md-2">
+
+					<div class="form-group">
+						<label>Ngày tháng năm sinh: </label> <input class="form-control"  type="date">
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label>Giới tính: </label> <select class="form-control"
+							id="selectquyen">
+							<option id="optionnam" value=true>NAM</option>
+							<option id="optionnu" value=false>Nữ</option>
+
 						</select>
 					</div>
 				</div>
@@ -82,12 +117,15 @@
 					<td>${nguoiDung.hoTen}</td>
 					<td>${nguoiDung.ngayThangNamSinh}</td>
 					<td>${nguoiDung.soDienThoaiLienHe}</td>
-
-					<td><button type="button"
-							style="${nguoiDung.quyen==0 ? 'background-color: red':'background-color: lightgreen'}"
-							class="btn btn-primary">${nguoiDung.quyen}</button></td>
+					<td><input type="button"
+						style='background-color: <c:if test="${nguoiDung.quyen==0}">red</c:if><c:if test="${nguoiDung.quyen==1}">blue</c:if>
+						<c:if test="${nguoiDung.quyen==2}">green</c:if>'
+						class="btn btn-primary" disabled
+						value="<c:if test="${nguoiDung.quyen==0}">DISABLE</c:if><c:if test="${nguoiDung.quyen==1}">ADMIN</c:if>
+						<c:if test="${nguoiDung.quyen==2}">USER</c:if>"></input></td>
 				</tr>
 			</c:forEach>
+			
 		</table>
 	</div>
 </body>
