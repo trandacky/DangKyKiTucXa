@@ -24,6 +24,8 @@
 					</li>
 					<li class="nav-item"><a class="nav-link ${activephong}" href="quanlyphong">Phòng</a>
 					</li>
+						<li class="nav-item"><a class="nav-link ${activegiuong}" href="quanlygiuong">Giường</a>
+					</li>
 				</ul>
 				
 				<div class="topright">

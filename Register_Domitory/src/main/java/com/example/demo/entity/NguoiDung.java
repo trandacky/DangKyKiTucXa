@@ -3,6 +3,8 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -15,6 +17,7 @@ import java.util.Set;
 @Table(name = "nguoi_dung")
 public class NguoiDung{
     @Id
+    @Column(length = 100)
     private String tenDangNhap;
 
     @Column(name = "mat_khau")
