@@ -2,7 +2,10 @@ package com.example.demo.entity;
 
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,13 +29,13 @@ public class Khu{
     private Boolean gioiTinh;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
-    private Set<Phong> phongs = new HashSet<>();
+    private List<Phong> phongs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
-    private Set<DangKyGiuong> dangKyGiuongs = new HashSet<>();
+    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
-    private Set<Giuong> giuongs = new HashSet<>();
+    private List<Giuong> giuongs = new ArrayList<>();
 
 	public Long getIdKhu() {
 		return idKhu;
@@ -66,29 +69,32 @@ public class Khu{
 		this.gioiTinh = gioiTinh;
 	}
 
-	public Set<Phong> getPhongs() {
+	public List<Phong> getPhongs() {
 		return phongs;
 	}
 
-	public void setPhongs(Set<Phong> phongs) {
+	public void setPhongs(List<Phong> phongs) {
 		this.phongs = phongs;
 	}
 
-	public Set<DangKyGiuong> getDangKyGiuongs() {
+	public List<DangKyGiuong> getDangKyGiuongs() {
 		return dangKyGiuongs;
 	}
 
-	public void setDangKyGiuongs(Set<DangKyGiuong> dangKyGiuongs) {
+	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
 		this.dangKyGiuongs = dangKyGiuongs;
 	}
 
-	public Set<Giuong> getGiuongs() {
+	public List<Giuong> getGiuongs() {
 		return giuongs;
 	}
 
-	public void setGiuongs(Set<Giuong> giuongs) {
+	public void setGiuongs(List<Giuong> giuongs) {
 		this.giuongs = giuongs;
 	}
+
+
+
 
    
 }

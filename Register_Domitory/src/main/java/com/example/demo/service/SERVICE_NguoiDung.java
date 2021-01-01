@@ -10,6 +10,7 @@ public interface SERVICE_NguoiDung {
 	List<NguoiDung> getAll();
 	NguoiDung setData(NguoiDung nguoiDung);
 	Optional<Object> update(NguoiDung nguoiDung);
-	Optional<NguoiDung> getByID(String id);
+	List<NguoiDung> getByID(String id);
 	Optional<Object> delete(String id);
+	List<NguoiDung> seach(String seachString);
 }

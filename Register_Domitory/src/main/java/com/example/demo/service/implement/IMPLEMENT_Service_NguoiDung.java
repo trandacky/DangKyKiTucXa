@@ -22,13 +22,13 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 	@Override
 	public List<NguoiDung> getAll() {
 		// TODO Auto-generated method stub
-		return repository_NguoiDung.findAll();
+		return repository_NguoiDung.findAllByOrderByTenDangNhapAsc();
 	}
 
 	@Override
-	public Optional<NguoiDung> getByID(String id) {
+	public List<NguoiDung> getByID(String id) {
 		// TODO Auto-generated method stub
-		return repository_NguoiDung.findById(id);
+		return repository_NguoiDung.findByTenDangNhapLike(id);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 			repository_NguoiDung.delete(nguoidung);
 			return ResponseEntity.ok().build();
 		});
+	}
+
+	@Override
+	public List<NguoiDung> seach(String seachString) {
+		seachString= "%"+seachString+"%";
+		return repository_NguoiDung.findByTenDangNhapLikeOrHoTenLike(seachString, seachString);
 	}
 
 }

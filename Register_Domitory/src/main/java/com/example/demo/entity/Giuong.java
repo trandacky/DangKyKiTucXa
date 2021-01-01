@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,7 +27,7 @@ public class Giuong{
     private Integer tinhTrangDangKy;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idGiuong")
-    private Set<DangKyGiuong> dangKyGiuongs = new HashSet<>();
+    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idPhong", nullable = false)
@@ -59,11 +61,13 @@ public class Giuong{
 		this.tinhTrangDangKy = tinhTrangDangKy;
 	}
 
-	public Set<DangKyGiuong> getDangKyGiuongs() {
+
+
+	public List<DangKyGiuong> getDangKyGiuongs() {
 		return dangKyGiuongs;
 	}
 
-	public void setDangKyGiuongs(Set<DangKyGiuong> dangKyGiuongs) {
+	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
 		this.dangKyGiuongs = dangKyGiuongs;
 	}
 

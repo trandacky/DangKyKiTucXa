@@ -14,6 +14,5 @@
 <body>
 	<h1>Welcome</h1>
 	<h2>${message}</h2>
-	<%@ include file="/WEB-INF/jsp/page/QuanLyTaiKhoan.jsp"%>
 </body>
 </html>

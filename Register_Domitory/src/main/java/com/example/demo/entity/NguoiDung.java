@@ -7,7 +7,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,7 +19,7 @@ import java.util.Set;
 @Table(name = "nguoi_dung")
 public class NguoiDung{
     @Id
-    @Column(length = 100)
+    @Column(length = 100, name="ten_dang_nhap")
     private String tenDangNhap;
 
     @Column(name = "mat_khau")
@@ -45,7 +47,7 @@ public class NguoiDung{
     private Boolean gioiTinh;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "tenDangNhap")
-    private Set<DangKyGiuong> dangKyGiuongs = new HashSet<>();
+    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
 
 	public String getTenDangNhap() {
 		return tenDangNhap;
@@ -119,11 +121,11 @@ public class NguoiDung{
 		this.gioiTinh = gioiTinh;
 	}
 
-	public Set<DangKyGiuong> getDangKyGiuongs() {
+	public List<DangKyGiuong> getDangKyGiuongs() {
 		return dangKyGiuongs;
 	}
 
-	public void setDangKyGiuongs(Set<DangKyGiuong> dangKyGiuongs) {
+	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
 		this.dangKyGiuongs = dangKyGiuongs;
 	}
 

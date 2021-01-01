@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,10 +37,10 @@ public class Phong{
     private Integer tinhTrang;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
-    private Set<DangKyGiuong> dangKyGiuongs = new HashSet<>();
+    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
-    private Set<Giuong> giuongs = new HashSet<>();
+    private List<Giuong> giuongs = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idKhu", nullable = false)
@@ -86,19 +88,29 @@ public class Phong{
 		this.tinhTrang = tinhTrang;
 	}
 
-	public Set<DangKyGiuong> getDangKyGiuongs() {
+
+
+	public Long getIdPhong() {
+		return idPhong;
+	}
+
+	public void setIdPhong(Long idPhong) {
+		this.idPhong = idPhong;
+	}
+
+	public List<DangKyGiuong> getDangKyGiuongs() {
 		return dangKyGiuongs;
 	}
 
-	public void setDangKyGiuongs(Set<DangKyGiuong> dangKyGiuongs) {
+	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
 		this.dangKyGiuongs = dangKyGiuongs;
 	}
 
-	public Set<Giuong> getGiuongs() {
+	public List<Giuong> getGiuongs() {
 		return giuongs;
 	}
 
-	public void setGiuongs(Set<Giuong> giuongs) {
+	public void setGiuongs(List<Giuong> giuongs) {
 		this.giuongs = giuongs;
 	}
 
