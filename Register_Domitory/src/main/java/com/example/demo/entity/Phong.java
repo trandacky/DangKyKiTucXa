@@ -25,16 +25,16 @@ public class Phong{
     private Integer phongSo;
 
     @Column(name = "tang")
-    private Integer tang;
+    private Integer tang=0;
 
     @Column(name = "so_giuong")
-    private Integer soGiuong;
+    private Integer soGiuong=0;
 
     @Column(name = "so_nguoi_dang_ky")
-    private Integer soNguoiDangKy;
+    private Integer soNguoiDangKy=0;
 
     @Column(name = "tinh_trang")
-    private Integer tinhTrang;
+    private Integer tinhTrang=1;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
     private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();

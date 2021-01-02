@@ -45,6 +45,8 @@
 					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="/quanly/taikhoan">Tài khoản</a>
 					</li>
 					<li class="nav-item"><a class="nav-link ${activekhu}" href="/quanly/khu">Quản lý khu</a>
+					</li>
+					<li class="nav-item"><a class="nav-link ${activequangcao}" href="/quanly/quangcao">Quảng cáo</a>
 				</ul>
 				
 				<div class="topright">

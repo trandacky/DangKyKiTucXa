@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <form action="/quanly/taikhoan/capnhat" method="post">
+<a href="quanly/taikhoan"><button class="btn btn-primary">Quay về trang thêm</button> </a>
 	<div class="content form-control bg-image">
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6">

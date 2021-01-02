@@ -21,17 +21,7 @@
 </style>
 <body>
 <c:import url="/WEB-INF/jsp/headerAdmin.jsp"/>
-	<div>
-		<form class="form-inline my-2 my-lg-0 form-control" action="/quanly/KTX/seach" method="get">
-			<input class="form-control mr-sm-2"
-				placeholder="Tìm kiếm" name="seach" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit" type="submit"
-				onclick="#">Tìm kiếm</button>
-
-		</form>
-	</div>
-
-	<div class="text-center">
+	<div class="text-center form-control">
 		<table class="table table-striped">
 			<tr>
 				<th>Tên khu</th>
@@ -40,9 +30,9 @@
 			</tr>
 			<c:forEach items="${ListKhu}" var="khu">
 				<tr>
-					<td><a href="/quanly/khu/chon/${khu.idKhu}"><img src="/image/home.jpg" class="img-size"><h2> ${khu.tenKhu}</h2></a></td>
+					<td><a href="/quanly/khu/chon/${khu.idKhu}"><img src="/image/home.jpg" class="img-size"><h3> ${khu.tenKhu}</h3></a></td>
 					<td>${khu.soTang}</td>
-					<td>${khu.gioiTinh}</td>
+					<td>${khu.gioiTinh==true ? 'Nam':'Nữ'}</td>
 				</tr>
 			</c:forEach>
 			

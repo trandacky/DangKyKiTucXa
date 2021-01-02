@@ -16,13 +16,16 @@ import com.example.demo.entity.NguoiDung;
 import com.example.demo.entity.Phong;
 import com.example.demo.service.SERVICE_Khu;
 import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.SERVICE_Phong;
 
 @Controller
 @RequestMapping(value = "/quanly/khu")
 public class Controller_QuanLyKhu {
 	@Autowired
 	private SERVICE_Khu service_Khu;
-
+	@Autowired
+	private SERVICE_Phong service_Phong;
+	
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public String index(Model model) {
 		List<Khu> listKhu = service_Khu.getAll();
@@ -30,17 +33,21 @@ public class Controller_QuanLyKhu {
 		model.addAttribute("activekhu", "active");
 		return "/admin/QuanLyKTX/QuanLyKhu";
 	}
+
 	@RequestMapping(value = { "/chon/{id}" }, method = RequestMethod.GET)
 	public String layIDKhu(Model model, HttpServletRequest request, @PathVariable long id) {
 		List<Phong> listPhong = service_Khu.getByID(id).get().getPhongs();
 		Khu khu = new Khu();
-		khu=service_Khu.getByID(id).get();
+		khu = service_Khu.getByID(id).get();
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("activekhu", "active");
-		model.addAttribute("tenkhu", khu.getTenKhu());
-		int soTang= khu.getSoTang();
+		model.addAttribute("tenkhu", khu);
+		model.addAttribute("form", "NullFile.jsp");
+		int soTang = khu.getSoTang();
 		request.setAttribute("soTang", soTang);
 		return "/admin/QuanLyKTX/QuanLyPhong";
 	}
+
+	
 
 }

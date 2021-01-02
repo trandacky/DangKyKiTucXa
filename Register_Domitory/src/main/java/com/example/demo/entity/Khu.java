@@ -23,10 +23,10 @@ public class Khu{
     private String tenKhu;
 
     @Column(name = "so_tang")
-    private Integer soTang;
+    private Integer soTang=5;
 
     @Column(name = "gioi_tinh")
-    private Boolean gioiTinh;
+    private Boolean gioiTinh=false;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
     private List<Phong> phongs = new ArrayList<>();

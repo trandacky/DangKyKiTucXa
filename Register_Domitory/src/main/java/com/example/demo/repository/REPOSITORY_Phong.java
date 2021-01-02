@@ -1,17 +1,14 @@
 package com.example.demo.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.Khu;
-
+import com.example.demo.entity.Phong;
 @Repository
-public interface REPOSITORY_Khu extends JpaRepository< Khu, Long>{
+public interface REPOSITORY_Phong extends JpaRepository<Phong, Long>{
 
-	List<Khu> findAllByOrderByIdKhuAsc();
-	
-	
+	List<Phong> findAllByOrderByIdPhongAsc();
+
 }

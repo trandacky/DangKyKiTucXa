@@ -21,7 +21,7 @@ public class IMPLEMENT_Service_Khu implements SERVICE_Khu {
 	@Override
 	public List<Khu> getAll() {
 		// TODO Auto-generated method stub
-		return repository_Khu.findAll();
+		return repository_Khu.findAllByOrderByIdKhuAsc();
 	}
 
 	@Override

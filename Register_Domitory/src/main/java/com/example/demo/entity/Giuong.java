@@ -24,7 +24,7 @@ public class Giuong{
     private String viTriGiuong;
 
     @Column(name = "tinh_trang_dang_ky")
-    private Integer tinhTrangDangKy;
+    private Integer tinhTrangDangKy=1;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idGiuong")
     private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();

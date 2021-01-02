@@ -2,6 +2,10 @@ package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDateTime;
+import java.time.Year;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -17,10 +21,10 @@ public class DangKyGiuong{
     private Long idDK;
 
     @Column(name = "hoc_ky")
-    private Integer hocKy;
+    private Integer hocKy=1;
 
     @Column(name = "nam_hoc")
-    private Integer namHoc;
+    private Integer namHoc=Integer.parseInt(Year.now().toString());
 
     @ManyToOne
     @JoinColumn(name = "idKhu", nullable = false)
