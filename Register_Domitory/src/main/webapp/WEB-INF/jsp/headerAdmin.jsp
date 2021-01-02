@@ -44,10 +44,7 @@
 					</li>
 					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="/quanly/taikhoan">Tài khoản</a>
 					</li>
-					<li class="nav-item"><a class="nav-link ${activephong}" href="/quanly/phong">Phòng</a>
-					</li>
-						<li class="nav-item"><a class="nav-link ${activegiuong}" href="/quanly/giuong">Giường</a>
-					</li>
+					<li class="nav-item"><a class="nav-link ${activekhu}" href="/quanly/khu">Quản lý khu</a>
 				</ul>
 				
 				<div class="topright">
