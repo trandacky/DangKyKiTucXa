@@ -55,7 +55,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="clearfix">
-								<label>Khu:  ${tenkhu.getTenKhu()} Tầng: </label>
+								<label>Khu:  ${tenkhu.getTenKhu()} Tầng: ${tang} </label>
 								<button class="btn btn-primary pull-right" type="submit" 
 								style=" float:right;"
 									onclick="#">Thêm</button>
