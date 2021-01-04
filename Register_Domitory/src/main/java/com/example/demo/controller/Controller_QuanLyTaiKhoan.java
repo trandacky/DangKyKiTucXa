@@ -11,6 +11,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,8 @@ public class Controller_QuanLyTaiKhoan {
 		}
 		NguoiDung nguoiDung = new NguoiDung();
 		nguoiDung.setHoTen((request.getParameter("hoten").trim()));
-		nguoiDung.setMatKhau(request.getParameter("matkhau").trim());
+		String matKhau=request.getParameter("matkhau").trim();
+		nguoiDung.setMatKhau(encrytePassword(matKhau));
 		nguoiDung.setEmail(request.getParameter("email").trim());
 		nguoiDung.setTenDangNhap(request.getParameter("tendangnhap").trim());
 		nguoiDung.setGioiTinh(Boolean.parseBoolean(request.getParameter("gioitinh").trim()));
@@ -74,7 +76,11 @@ public class Controller_QuanLyTaiKhoan {
 		model.addAttribute("activetaikhoan", "active");
 		return "redirect:/quanly/taikhoan";
 	}
-
+	   public static String encrytePassword(String password) {
+	        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	        return encoder.encode(password);
+	    }
+	 
 	@RequestMapping(value = "/seach", method = RequestMethod.GET)
 	public String timKiem(Model model, HttpServletRequest request) {
 		String seachString = ((request.getParameter("seach").trim()));
@@ -113,7 +119,8 @@ public class Controller_QuanLyTaiKhoan {
 		nguoiDung.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		nguoiDung.setSoDienThoaiLienHe(request.getParameter("sodienthoai").trim());
 		nguoiDung.setNgayThangNamSinh(LocalDate.parse(request.getParameter("ngaythangnamsinh").trim()));
-		
+		String matKhau=request.getParameter("matkhau").trim();
+		nguoiDung.setMatKhau(encrytePassword(matKhau));
 
 		service_NguoiDung.update(nguoiDung);
 		List<NguoiDung> listNguoiDung = service_NguoiDung.getAll();

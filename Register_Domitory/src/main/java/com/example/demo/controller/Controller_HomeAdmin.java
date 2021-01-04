@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public class Controller_HomeAdmin {
 	@RequestMapping(value = { "/","/index" }, method = RequestMethod.GET)
-	public String index2(Model model) {
+	public String login(Model model) {
 		model.addAttribute("activetrangchu","active");
-		return "index";
+		return "/index";
+	}
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public String home(Model model) {
+		return "/home";
 	}
 }

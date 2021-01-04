@@ -31,10 +31,11 @@ public class Controller_QuanLyKhu {
 		List<Khu> listKhu = service_Khu.getAll();
 		model.addAttribute("ListKhu", listKhu);
 		model.addAttribute("activekhu", "active");
+		model.addAttribute("form", "NullFile.jsp");
 		return "/admin/QuanLyKTX/QuanLyKhu";
 	}
 
-	@RequestMapping(value = { "/chon/{id}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/chonchitiet/{id}" }, method = RequestMethod.GET)
 	public String layIDKhu(Model model, HttpServletRequest request, @PathVariable long id) {
 		List<Phong> listPhong = service_Khu.getByID(id).get().getPhongs();
 		Khu khu = new Khu();
@@ -46,6 +47,30 @@ public class Controller_QuanLyKhu {
 		int soTang = khu.getSoTang();
 		request.setAttribute("soTang", soTang);
 		return "/admin/QuanLyKTX/QuanLyPhong";
+	}
+	@RequestMapping(value = { "/themkhu" }, method = RequestMethod.GET)
+	public String loadFormThemKhu(Model model) {
+		List<Khu> listKhu = service_Khu.getAll();
+		model.addAttribute("ListKhu", listKhu);
+		model.addAttribute("activekhu", "active");
+		model.addAttribute("form", "Them.jsp");
+		return "/admin/QuanLyKTX/QuanLyKhu";
+	}
+	@RequestMapping(value = { "/themkhu/them" }, method = RequestMethod.POST)
+	public String themKhu(Model model, HttpServletRequest request) {
+		Khu khu= new Khu();
+		String tenKhu=request.getParameter("tenkhu").toString().trim();
+		boolean gioiTinh=Boolean.parseBoolean(request.getParameter("gioitinh").toString().trim());
+		int soTang= Integer.parseInt(request.getParameter("sotang").toString().trim());
+		khu.setGioiTinh(gioiTinh);
+		khu.setSoTang(soTang);
+		khu.setTenKhu(tenKhu);
+		service_Khu.setData(khu);
+		List<Khu> listKhu = service_Khu.getAll();
+		model.addAttribute("ListKhu", listKhu);
+		model.addAttribute("activekhu", "active");
+		model.addAttribute("form", "NullFile.jsp");
+		return "redirect:/quanly/khu/";
 	}
 
 	
