@@ -33,7 +33,7 @@ public class IMPLEMENT_Service_Giuong implements SERVICE_Giuong{
 
 	@Override
 	public Optional<Object> update(Giuong giuong) {
-		return repository_giuong.findById(giuong.getIdgiuong()).map(giuong2 -> {
+		return repository_giuong.findById(giuong.getIdGiuong()).map(giuong2 -> {
 			giuong2 = giuong;
 			return repository_giuong.save(giuong2);
 		});

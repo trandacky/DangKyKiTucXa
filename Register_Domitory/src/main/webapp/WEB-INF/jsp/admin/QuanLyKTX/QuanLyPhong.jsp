@@ -43,27 +43,75 @@
 				for (int i = Integer.parseInt(request.getAttribute("soTang").toString()); i > 0; i--) {
 				request.setAttribute("i", i);
 			%>
-
 			<tr>
 				<c:forEach items="${ListPhong}" var="phong">
 					<c:if test="${phong.tang==i}">
 						<c:if test="${phong.tinhTrang==0}">
 							<td class="btn btn-outline-light"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}"><label>${phong.soNguoiDangKy}/${phong.soGiuong}</label><img
+								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
+									<%
+										int x = 0;
+									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
+
+										<c:forEach items="${giuong2.getDangKyGiuongs()}"
+											var="giuongdangky">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+												<%
+													x++;
+												%>
+											</c:if>
+										</c:forEach>
+
+									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label><img
 									src="/image/roomwhite.jpg" class="img-size">
 									<h3>${phong.phongSo}</h3></a></td>
+
+									<h3>${phong.phongSo}</h3>
+							</a></td>
 						</c:if>
 						<c:if test="${phong.tinhTrang==1}">
-							<td class="btn btn-outline-success"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}"><label>${phong.soNguoiDangKy}/${phong.soGiuong}</label><img
+							<td class="btn btn-outline-light"><a
+								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
+									<%
+										int x = 0;
+									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
+
+										<c:forEach items="${giuong2.getDangKyGiuongs()}"
+											var="giuongdangky">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+												<%
+													x++;
+												%>
+											</c:if>
+										</c:forEach>
+
+									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label> <img
 									src="/image/roomgreen.jpg" class="img-size">
-									<h3>${phong.phongSo}</h3></a></td>
+
+									<h3>${phong.phongSo}</h3>
+							</a></td>
 						</c:if>
 						<c:if test="${phong.tinhTrang==2}">
 							<td class="btn btn-outline-danger"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}"><label>${phong.soNguoiDangKy}/${phong.soGiuong}</label><img
+								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
+									<%
+										int x = 0;
+									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
+
+										<c:forEach items="${giuong2.getDangKyGiuongs()}"
+											var="giuongdangky">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+												<%
+													x++;
+												%>
+											</c:if>
+										</c:forEach>
+
+									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label> <img
 									src="/image/roomred.jpg" class="img-size">
-									<h3>${phong.phongSo}</h3></a></td>
+
+									<h3>${phong.phongSo}</h3>
+							</a></td>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -71,7 +119,6 @@
 					<a href="/quanly/khu/phong/themphong/idkhu=${tenkhu.getIdKhu()}&tang=${i}">
 						<img src="/image/plusroom.jpg" class="img-size"> Thêm phòng tầng ${i}</a>
 				</td>
-			</tr>
 			<%
 				}
 			%>

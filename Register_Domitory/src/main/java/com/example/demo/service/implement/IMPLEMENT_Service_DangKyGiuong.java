@@ -23,6 +23,11 @@ public class IMPLEMENT_Service_DangKyGiuong implements SERVICE_DangKyGiuong {
 		// TODO Auto-generated method stub
 		return repository_DangKyGiuong.findAll();
 	}
+	@Override
+	public List<Object> laySoLuongGiuongDaDangKyCuaPhong(Long id) {
+		// TODO Auto-generated method stub
+		return repository_DangKyGiuong.laySoLuongGiuongDaDangKyCuaPhong(id);
+	}
 
 	@Override
 	public Optional<DangKyGiuong> getByID(long id) {
@@ -38,7 +43,7 @@ public class IMPLEMENT_Service_DangKyGiuong implements SERVICE_DangKyGiuong {
 
 	@Override
 	public Optional<Object> update(DangKyGiuong dangKyGiuong) {
-		return repository_DangKyGiuong.findById(dangKyGiuong.getIdDK()).map(dangkygiuong -> {
+		return repository_DangKyGiuong.findById(dangKyGiuong.getIdDangKyGiuong()).map(dangkygiuong -> {
 			dangkygiuong = dangKyGiuong;
 			return repository_DangKyGiuong.save(dangkygiuong);
 		});
@@ -51,5 +56,5 @@ public class IMPLEMENT_Service_DangKyGiuong implements SERVICE_DangKyGiuong {
 			return ResponseEntity.ok().build();
 		});
 	}
-
+	
 }

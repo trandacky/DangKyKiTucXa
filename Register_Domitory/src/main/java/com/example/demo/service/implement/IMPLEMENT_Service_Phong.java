@@ -32,8 +32,6 @@ private REPOSITORY_Phong repository_Phong;
 	public Optional<Object> update(Phong phong) {
 		return repository_Phong.findById(phong.getIdPhong()).map(Phong -> {
 			Phong.setPhongSo(phong.getPhongSo());
-			Phong.setSoGiuong(phong.getSoGiuong());
-			Phong.setSoNguoiDangKy(phong.getSoNguoiDangKy());
 			Phong.setTang(phong.getTang());
 			Phong.setTinhTrang(phong.getTinhTrang());
 			return repository_Phong.save(Phong);

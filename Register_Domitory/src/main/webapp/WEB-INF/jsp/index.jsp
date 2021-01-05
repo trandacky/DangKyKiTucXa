@@ -45,6 +45,7 @@
 								class="form-control centertab" placeholder="Mật khẩu">
 						</div>
 					</div>
+					<input name="remember-me" type="hidden" value="on">
 					<br>
 					<div class="form-group">
 						<button type="submit" class="btn btn-outline-info btn-lg centertab">Đăng nhập</button>

@@ -12,4 +12,5 @@ public interface SERVICE_DangKyGiuong {
 	Optional<Object> update(DangKyGiuong dangKyGiuong);
 	Optional<DangKyGiuong> getByID(long id);
 	Optional<Object> delete(long id);
+	List<Object> laySoLuongGiuongDaDangKyCuaPhong(Long id);
 }

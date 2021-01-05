@@ -2,76 +2,56 @@ package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.Date;
 
 import javax.persistence.*;
 
-
 /**
  * A DangKyGiuong.
  */
 @Entity
 @Table(name = "dang_ky_giuong")
-public class DangKyGiuong{
+public class DangKyGiuong {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDK;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_dang_ky_giuong")
+	private Long idDangKyGiuong;
+	
+	@Column(name = "ngay_dang_ky")
+	private LocalDate ngayDangKy= LocalDate.now();
+	
+	@Column(name = "tinh_trang_dang_ky")
+	private Integer tinhTrangDangKy = 0;
 
-    @Column(name = "hoc_ky")
-    private Integer hocKy=1;
 
-    @Column(name = "nam_hoc")
-    private Integer namHoc=Integer.parseInt(Year.now().toString());
+	@ManyToOne
+	@JoinColumn(name = "tenDangNhap", nullable = false)
+	private NguoiDung tenDangNhap;
 
-    @ManyToOne
-    @JoinColumn(name = "idKhu", nullable = false)
-    private Khu idKhu;
+	@ManyToOne
+	@JoinColumn(name = "idGiuong", nullable = false)
+	private Giuong idGiuong;
 
-    @ManyToOne
-    @JoinColumn(name = "tenDangNhap", nullable = false)
-    private NguoiDung tenDangNhap;
 
-    @ManyToOne
-    @JoinColumn(name = "idGiuong", nullable = false)
-    private Giuong idGiuong;
 
-    @ManyToOne
-    @JoinColumn(name = "idPhong", nullable = false)
-    private Phong idPhong;
-
-	public Long getIdDK() {
-		return idDK;
+	public Long getIdDangKyGiuong() {
+		return idDangKyGiuong;
 	}
 
-	public void setIdDK(Long idDK) {
-		this.idDK = idDK;
+	public void setIdDangKyGiuong(Long idDangKyGiuong) {
+		this.idDangKyGiuong = idDangKyGiuong;
 	}
 
-	public Integer getHocKy() {
-		return hocKy;
+	public LocalDate getNgayDangKy() {
+		return ngayDangKy;
 	}
 
-	public void setHocKy(Integer hocKy) {
-		this.hocKy = hocKy;
-	}
-
-	public Integer getNamHoc() {
-		return namHoc;
-	}
-
-	public void setNamHoc(Integer namHoc) {
-		this.namHoc = namHoc;
-	}
-
-	public Khu getIdKhu() {
-		return idKhu;
-	}
-
-	public void setIdKhu(Khu idKhu) {
-		this.idKhu = idKhu;
+	public void setNgayDangKy(LocalDate ngayDangKy) {
+		this.ngayDangKy = ngayDangKy;
 	}
 
 	public NguoiDung getTenDangNhap() {
@@ -90,14 +70,16 @@ public class DangKyGiuong{
 		this.idGiuong = idGiuong;
 	}
 
-	public Phong getIdPhong() {
-		return idPhong;
+	public int getTinhTrangDangKy() {
+		return tinhTrangDangKy;
 	}
 
-	public void setIdPhong(Phong idPhong) {
-		this.idPhong = idPhong;
+	public void setTinhTrangDangKy(int tinhTrangDangKy) {
+		this.tinhTrangDangKy = tinhTrangDangKy;
 	}
 
-   
+
+	
+	
 
 }

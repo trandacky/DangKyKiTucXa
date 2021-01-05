@@ -27,17 +27,9 @@ public class Phong{
     @Column(name = "tang")
     private Integer tang=0;
 
-    @Column(name = "so_giuong")
-    private Integer soGiuong=0;
-
-    @Column(name = "so_nguoi_dang_ky")
-    private Integer soNguoiDangKy=0;
 
     @Column(name = "tinh_trang")
     private Integer tinhTrang=1;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
-    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
     private List<Giuong> giuongs = new ArrayList<>();
@@ -64,22 +56,6 @@ public class Phong{
 		this.tang = tang;
 	}
 
-	public Integer getSoGiuong() {
-		return soGiuong;
-	}
-
-	public void setSoGiuong(Integer soGiuong) {
-		this.soGiuong = soGiuong;
-	}
-
-	public Integer getSoNguoiDangKy() {
-		return soNguoiDangKy;
-	}
-
-	public void setSoNguoiDangKy(Integer soNguoiDangKy) {
-		this.soNguoiDangKy = soNguoiDangKy;
-	}
-
 	public Integer getTinhTrang() {
 		return tinhTrang;
 	}
@@ -96,14 +72,6 @@ public class Phong{
 
 	public void setIdPhong(Long idPhong) {
 		this.idPhong = idPhong;
-	}
-
-	public List<DangKyGiuong> getDangKyGiuongs() {
-		return dangKyGiuongs;
-	}
-
-	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
-		this.dangKyGiuongs = dangKyGiuongs;
 	}
 
 	public List<Giuong> getGiuongs() {

@@ -11,6 +11,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +28,27 @@ public class Controller_QuanLyTaiKhoan {
 	@Autowired
 	private SERVICE_NguoiDung service_NguoiDung;
 
+	public NguoiDung getTaiKhoanDangNhap()
+	{
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username;
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+		    username = principal.toString();
+		}
+		NguoiDung taiKhoan=new NguoiDung();
+		taiKhoan = service_NguoiDung.getByID(username).get(0);
+		return taiKhoan;
+	}
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model,HttpServletRequest request) {
 		List<NguoiDung> listNguoiDung = service_NguoiDung.getAll();
 		model.addAttribute("FormUpdateOrAdd", "/WEB-INF/jsp/admin/QuanLyTaiKhoan/Them.jsp");
 		model.addAttribute("ListNguoiDung", listNguoiDung);
 		model.addAttribute("activetaikhoan", "active");
+		request.getSession().setAttribute("tennguoidung","");// getTaiKhoanDangNhap().getHoTen());
 		return "/admin/QuanLyTaiKhoan/QuanLyTaiKhoan";
 	}
 

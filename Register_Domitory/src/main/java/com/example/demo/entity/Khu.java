@@ -31,11 +31,6 @@ public class Khu{
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
     private List<Phong> phongs = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
-    private List<DangKyGiuong> dangKyGiuongs = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "idKhu")
-    private List<Giuong> giuongs = new ArrayList<>();
 
 	public Long getIdKhu() {
 		return idKhu;
@@ -76,23 +71,6 @@ public class Khu{
 	public void setPhongs(List<Phong> phongs) {
 		this.phongs = phongs;
 	}
-
-	public List<DangKyGiuong> getDangKyGiuongs() {
-		return dangKyGiuongs;
-	}
-
-	public void setDangKyGiuongs(List<DangKyGiuong> dangKyGiuongs) {
-		this.dangKyGiuongs = dangKyGiuongs;
-	}
-
-	public List<Giuong> getGiuongs() {
-		return giuongs;
-	}
-
-	public void setGiuongs(List<Giuong> giuongs) {
-		this.giuongs = giuongs;
-	}
-
 
 
 

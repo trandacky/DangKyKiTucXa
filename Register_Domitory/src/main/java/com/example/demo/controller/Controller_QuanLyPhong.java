@@ -33,7 +33,6 @@ public class Controller_QuanLyPhong {
 		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
 		
 		
-		int soGiuong=Integer.parseInt(request.getParameter("sogiuong"));
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
 		long idPhong=Long.parseLong(request.getParameter("idphong"));
@@ -41,7 +40,6 @@ public class Controller_QuanLyPhong {
 		phong.setIdPhong(idPhong);
 		phong.setPhongSo(phongSo);
 		phong.setTinhTrang(tinhTrang);
-		phong.setSoGiuong(soGiuong);
 		service_Phong.update(phong);
 		
 		khu = service_Khu.getByID(idkhu).get();
@@ -96,13 +94,11 @@ public class Controller_QuanLyPhong {
 		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
 		khu=service_Khu.getByID(idkhu).get();
 		
-		int soGiuong=Integer.parseInt(request.getParameter("sogiuong"));
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
 		int tang=Integer.parseInt(request.getParameter("tang"));
 		phong.setPhongSo(phongSo);
 		phong.setTinhTrang(tinhTrang);
-		phong.setSoGiuong(soGiuong);
 		phong.setIdKhu(khu);
 		phong.setTang(tang);
 		service_Phong.setData(phong);
