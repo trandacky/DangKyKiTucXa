@@ -8,6 +8,12 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+.img-size {
+	height: auto;
+	width: auto;
+	max-width: 50px;
+	max-height: 50px;
+}
 </style>
 <div>
 	<div style="width: 50%; display: inline-block;">
@@ -78,7 +84,25 @@
 				</div>
 			</div>
 		</form>
+		<div>
+		
+		</div>
 	</div>
-	<div style="float: right; width: 50%;">Phần này để chọn thêm
-		giường</div>
+	<div style="float: right; width: 50%;">
+	<% 
+	int sogiuong= Integer.parseInt(request.getAttribute("sogiuong").toString());
+	for(int i=0;i<sogiuong;i++){ %>
+	<c:forEach items="${PhongInput.getGiuongs()}" var="giuong">
+		<a href="${giuong.getIdGiuong()}"><label class="">${giuong.getViTriGiuong()}</label><img class="img-size" src="/image/bedwhite.jpg"></a>
+		
+		
+	</c:forEach>
+	
+	<%} %>
+	</div>
+</div>
+<div>
+	<form>
+		kjhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+	</form>
 </div>

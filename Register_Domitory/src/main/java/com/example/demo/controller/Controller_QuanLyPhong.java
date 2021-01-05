@@ -30,8 +30,7 @@ public class Controller_QuanLyPhong {
 		Phong phong = new Phong();
 		
 		int idkhu=Integer.parseInt(request.getParameter("idkhu"));
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
-		
+		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();		
 		
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
@@ -78,6 +77,8 @@ public class Controller_QuanLyPhong {
 		khu = service_Khu.getByID(idkhu).get();
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("PhongInput", phong);
+		model.addAttribute("sogiuong", phong.getGiuongs().size());
+		
 		model.addAttribute("activekhu", "active");
 		model.addAttribute("tenkhu", khu);
 		model.addAttribute("form", "CapNhat.jsp");
