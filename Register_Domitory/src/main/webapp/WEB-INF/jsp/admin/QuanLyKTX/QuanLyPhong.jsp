@@ -45,15 +45,12 @@
 			%>
 
 			<tr>
-
 				<c:forEach items="${ListPhong}" var="phong">
-
 					<c:if test="${phong.tang==i}">
 						<c:if test="${phong.tinhTrang==0}">
 							<td class="btn btn-outline-light"><a
 								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}"><label>${phong.soNguoiDangKy}/${phong.soGiuong}</label><img
 									src="/image/roomwhite.jpg" class="img-size">
-
 									<h3>${phong.phongSo}</h3></a></td>
 						</c:if>
 						<c:if test="${phong.tinhTrang==1}">
@@ -69,13 +66,11 @@
 									<h3>${phong.phongSo}</h3></a></td>
 						</c:if>
 					</c:if>
- 
 				</c:forEach>
-
-				<td><a href="/quanly/khu/phong/themphong/idkhu=${tenkhu.getIdKhu()}&tang=${i}"><img
-						src="/image/plusroom.jpg" class="img-size"> Thêm phòng tầng
-						${i}</a></td>
-
+				<td>
+					<a href="/quanly/khu/phong/themphong/idkhu=${tenkhu.getIdKhu()}&tang=${i}">
+						<img src="/image/plusroom.jpg" class="img-size"> Thêm phòng tầng ${i}</a>
+				</td>
 			</tr>
 			<%
 				}

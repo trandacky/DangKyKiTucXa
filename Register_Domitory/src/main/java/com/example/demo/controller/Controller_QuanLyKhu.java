@@ -72,7 +72,4 @@ public class Controller_QuanLyKhu {
 		model.addAttribute("form", "NullFile.jsp");
 		return "redirect:/quanly/khu/";
 	}
-
-	
-
 }
