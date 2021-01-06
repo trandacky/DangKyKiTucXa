@@ -118,7 +118,7 @@
 				<th>Trạng thái</th>
 
 			</tr>
-			<!-- bla bla -->
+			<!-- bla bla bla -->
 			
 		</table>
 	</div>
