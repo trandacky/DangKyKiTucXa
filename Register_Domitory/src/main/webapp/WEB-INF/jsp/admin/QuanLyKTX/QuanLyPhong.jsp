@@ -64,13 +64,12 @@
 
 									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label><img
 									src="/image/roomwhite.jpg" class="img-size">
-									<h3>${phong.phongSo}</h3></a></td>
-
 									<h3>${phong.phongSo}</h3>
-							</a></td>
+									${phong.getGiaTien().toString()} VNĐ
+									</a></td>
 						</c:if>
 						<c:if test="${phong.tinhTrang==1}">
-							<td class="btn btn-outline-light"><a
+							<td class="btn btn-outline-success"><a
 								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
 									<%
 										int x = 0;
@@ -89,6 +88,7 @@
 									src="/image/roomgreen.jpg" class="img-size">
 
 									<h3>${phong.phongSo}</h3>
+									${phong.getGiaTien().toString()} VNĐ
 							</a></td>
 						</c:if>
 						<c:if test="${phong.tinhTrang==2}">
@@ -111,6 +111,7 @@
 									src="/image/roomred.jpg" class="img-size">
 
 									<h3>${phong.phongSo}</h3>
+									${phong.getGiaTien().toString()} VNĐ
 							</a></td>
 						</c:if>
 					</c:if>

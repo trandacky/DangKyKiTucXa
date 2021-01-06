@@ -40,7 +40,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link ${activetrangchu}" href="/index">Trang chủ</a>
+					<li class="nav-item"><a class="nav-link ${activetrangchu}" href="/home">Trang chủ</a>
 					</li>
 					<li class="nav-item"><a class="nav-link ${activetaikhoan}" href="/quanly/taikhoan">Tài khoản</a>
 					</li>
