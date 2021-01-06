@@ -94,10 +94,11 @@ public class Controller_QuanLyPhong {
 		int idkhu=Integer.parseInt(request.getParameter("idkhu"));
 		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
 		khu=service_Khu.getByID(idkhu).get();
-		
+		int giaTien=Integer.parseInt(request.getParameter("giaphong"));
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
 		int tang=Integer.parseInt(request.getParameter("tang"));
+		phong.setGiaTien(giaTien);
 		phong.setPhongSo(phongSo);
 		phong.setTinhTrang(tinhTrang);
 		phong.setIdKhu(khu);

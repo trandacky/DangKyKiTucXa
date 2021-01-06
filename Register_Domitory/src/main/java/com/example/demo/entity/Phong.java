@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +33,9 @@ public class Phong{
 
     @Column(name = "tinh_trang")
     private Integer tinhTrang=1;
+    
+    @Column(name = "gia_tien")
+    private int giaTien;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "idPhong")
     private List<Giuong> giuongs = new ArrayList<>();
@@ -89,6 +95,20 @@ public class Phong{
 	public void setIdKhu(Khu idKhu) {
 		this.idKhu = idKhu;
 	}
+
+	public int getGiaTien() {
+		return giaTien;
+	}
+
+	public void setGiaTien(int giaTien) {
+		this.giaTien = giaTien;
+	}
+
+
+
+
+
+	
 
     
 }

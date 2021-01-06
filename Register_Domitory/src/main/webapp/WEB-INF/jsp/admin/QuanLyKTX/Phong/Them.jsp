@@ -33,12 +33,12 @@
 								<label>Tên phòng: </label> <input class="form-control" name="phongso">
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-5">
 							<div class="form-group">
-								<label>Số giường: </label> <input value="8" type="number" max=10 min=0 class="form-control" name="sogiuong">
+								<label>Giá phòng: </label> <input value="0" type="number" step="100000" max=10000000000 min=0 class="form-control" name="giaphong">
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label>Tình trạng: </label> <select class="form-control"
 									name="tinhtrang">
