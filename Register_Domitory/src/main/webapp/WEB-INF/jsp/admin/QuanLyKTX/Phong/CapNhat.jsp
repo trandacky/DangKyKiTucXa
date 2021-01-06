@@ -92,7 +92,7 @@
 		
 		</div>
 	</div>
-	<div >
+<!-- <div >
 	<% 
 	int sogiuong= Integer.parseInt(request.getAttribute("sogiuong").toString());
 	for(int i=0;i<sogiuong;i++){ %>
@@ -103,10 +103,22 @@
 	</c:forEach>
 	
 	<%} %>
+	</div> -->	
+</div>
+<div class="text-center">
+		<table class="table table-striped">
+			<tr>
+				<th>Số giường</th>
+				<th>Họ tên sinh viên</th>
+				<th>Ngày tháng năm sinh</th>
+				<th>Số điện thoại</th>
+				<th>Email</th>
+				<th>Giới tính</th>
+				<th>Thời gian đăng ký</th>
+				<th>Trạng thái</th>
+
+			</tr>
+			<!-- bla bla -->
+			
+		</table>
 	</div>
-</div>
-<div>
-	<form>
-		kjhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-	</form>
-</div>
