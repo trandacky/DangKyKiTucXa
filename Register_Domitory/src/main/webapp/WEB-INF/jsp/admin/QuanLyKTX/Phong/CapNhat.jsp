@@ -14,9 +14,10 @@
 	max-width: 50px;
 	max-height: 50px;
 }
+
 </style>
 <div>
-	<div style="width: 50%; display: inline-block;">
+	<div style="width: 100%; display: inline-block;">
 		<form action="/quanly/khu/phong/capnhat" method="post">
 			<div class="content form-control bg-image">
 				<div class="container-fluid">
@@ -25,12 +26,12 @@
 							<input name="idkhu" type="hidden"
 								value="${PhongInput.getIdKhu().getIdKhu() }"> <input
 								name="idphong" type="hidden" value="${PhongInput.getIdPhong() }">
-							<div class="form-group">
+							<div class="form-group" style="padding-left: 70px;">
 								<label>Tên phòng: </label> <input class="form-control"
 									value="${PhongInput.getPhongSo()}" name="phongso">
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<div class="form-group">
 								<%
 									int songuoio = 0;
@@ -44,13 +45,22 @@
 									</c:if>
 									</c:forEach>
 								</c:forEach>
-								<label>Số lượng: </label> <label><%=songuoio%>/${PhongInput.getGiuongs().size()}</label>
+								<label>Số lượng: </label>
+								<input class="form-control"
+									value="<%=songuoio%>/${PhongInput.getGiuongs().size()}" disabled>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-2">
 							<div class="form-group">
-								<label>Tình trạng: </label> <select class="form-control"
-									name="tinhtrang">
+								<label>Số tiền: </label> <input class="form-control"
+									value="${PhongInput.getGiuongs().size()}" name="sogiuong"
+									type="number" min="0" max="20">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group" style="padding-left: 0px;">
+								<label>Tình trạng: </label> 
+								<select class="form-control" name="tinhtrang">
 									<option <c:if test="${PhongInput.tinhTrang==0}">selected</c:if>
 										value=0>Không cho phép truy cập</option>
 									<option <c:if test="${PhongInput.tinhTrang==1}">selected</c:if>
@@ -61,25 +71,19 @@
 								</select>
 							</div>
 						</div>
+						<div class="col-md-2">
+							<div class="clearfix"
+								style="position: absolute;left: 5%; bottom: 17%;">
+								<button class="btn btn-primary pull-right" type="submit"
+									onclick="#">Cập nhật</button>
+							</div>
+						</div>
 					</div>
 
 				</div>
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label>Số giường: </label> <input class="form-control"
-									value="${PhongInput.getGiuongs().size()}" name="sogiuong"
-									type="number" min="0" max="20">
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="clearfix"
-								style="position: absolute; right: 0; bottom: 17%;">
-								<button class="btn btn-primary pull-right" type="submit"
-									onclick="#">Cập nhật</button>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -88,7 +92,7 @@
 		
 		</div>
 	</div>
-	<div style="float: right; width: 50%;">
+	<div >
 	<% 
 	int sogiuong= Integer.parseInt(request.getAttribute("sogiuong").toString());
 	for(int i=0;i<sogiuong;i++){ %>
