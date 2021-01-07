@@ -13,115 +13,36 @@
 </head>
 <style>
 .img-size {
-    height: auto; 
-    width: auto; 
-    max-width: 100px; 
-    max-height: 100px;
+	height: auto;
+	width: auto;
+	max-width: 100px;
+	max-height: 100px;
 }
+
 .img-size2 {
-    height: auto; 
-    width: auto; 
-    max-width: 50px; 
-    max-height: 50px;
+	height: auto;
+	width: auto;
+	max-width: 50px;
+	max-height: 50px;
 }
 </style>
 <body>
-<c:import url="/WEB-INF/jsp/headerAdmin.jsp"/>
+	<c:import url="/WEB-INF/jsp/${headerForm}" />
 	<div class="text-center form-control">
 		<table class="table table-striped">
 			<tr>
-				<th>Tên khu</th>
-				<th>Tầng</th>
-				<th>Phòng</th>
-				<th>Giới tính</th>
-			</tr>
-			<c:forEach items="${ListKhu}" var="khu">
-				<tr>
-					<td><a href="/quanly/khu/chonchitiet/${khu.idKhu}"><img src="/image/home.jpg" class="img-size"><h3> ${khu.tenKhu}</h3></a></td>
-					<td><table class="table table-striped">
+				<c:forEach items="${ListKhu}" var="khu">
 
-			<c:forEach var = "i" begin = "1" end = "${khu.getSoTang()}">
-			<tr>
-			<td>${i}<td>
-				<c:forEach items="${khu.getPhongs()}" var="phong">
-					<c:if test="${phong.tang==i}">
-						<c:if test="${phong.tinhTrang==0}">
-							<td class="btn btn-outline-light"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
-									<%
-										int x = 0;
-									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
-
-										<c:forEach items="${giuong2.getDangKyGiuongs()}"
-											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-												<%
-													x++;
-												%>
-											</c:if>
-										</c:forEach>
-
-									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label><img
-									src="/image/roomwhite.jpg" class="img-size2">
-									<h5>P${phong.phongSo}</h5>
-									${phong.getGiaTien().toString()} VNĐ
-									</a></td>
-						</c:if>
-						<c:if test="${phong.tinhTrang==1}">
-							<td class="btn btn-outline-success"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
-									<%
-										int x = 0;
-									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
-
-										<c:forEach items="${giuong2.getDangKyGiuongs()}"
-											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-												<%
-													x++;
-												%>
-											</c:if>
-										</c:forEach>
-
-									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label> <img
-									src="/image/roomgreen.jpg" class="img-size2">
-
-									<h5>P${phong.phongSo}</h5>
-									${phong.getGiaTien().toString()} VNĐ
-							</a></td>
-						</c:if>
-						<c:if test="${phong.tinhTrang==2}">
-							<td class="btn btn-outline-danger"><a
-								href="/quanly/khu/phong/chon/phong=${phong.idPhong}&khu=${phong.getIdKhu().getIdKhu()}">
-									<%
-										int x = 0;
-									%> <c:forEach items="${phong.getGiuongs()}" var="giuong2">
-
-										<c:forEach items="${giuong2.getDangKyGiuongs()}"
-											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-												<%
-													x++;
-												%>
-											</c:if>
-										</c:forEach>
-
-									</c:forEach> <label><%=x%>/${phong.getGiuongs().size()}</label> <img
-									src="/image/roomred.jpg" class="img-size2">
-
-									<h3>${phong.phongSo}</h3>
-									${phong.getGiaTien().toString()} VNĐ
-							</a></td>
-						</c:if>
-					</c:if>
+					<td class="btn btn-outline-success"><a
+						href="/home/khu/idkhu=${khu.idKhu}&idphong=${khu.getPhongs().get(0).getIdPhong()}"><img src="/image/ktx.jpg"
+							class="img-size">
+						<h3>${khu.tenKhu}</h3>Số tầng: ${khu.soTang}<br>Giới tính:
+							${khu.gioiTinh==true ? 'Nam':'Nữ'}</a></td>
 				</c:forEach>
-			</c:forEach>
-		</table></td>
-					<td>${khu.gioiTinh==true ? 'Nam':'Nữ'}</td>
-				</tr>
-			</c:forEach>
-			
+			</tr>
 		</table>
 	</div>
+	<c:import url="/WEB-INF/jsp/user/${formtang}"/>
+	<c:import url="/WEB-INF/jsp/user/${formphong}"/>
 </body>
 </html>
