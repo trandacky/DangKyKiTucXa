@@ -13,4 +13,6 @@ public interface SERVICE_DangKyGiuong {
 	Optional<DangKyGiuong> getByID(long id);
 	Optional<Object> delete(long id);
 	List<Object> laySoLuongGiuongDaDangKyCuaPhong(Long id);
+	
+	Optional<DangKyGiuong> updateTinhTrang(long idgiuong, int tinhtrang);
 }

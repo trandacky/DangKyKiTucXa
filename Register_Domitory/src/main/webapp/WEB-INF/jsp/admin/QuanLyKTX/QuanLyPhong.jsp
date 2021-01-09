@@ -55,7 +55,7 @@
 
 										<c:forEach items="${giuong2.getDangKyGiuongs()}"
 											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 												<%
 													x++;
 												%>
@@ -77,7 +77,7 @@
 
 										<c:forEach items="${giuong2.getDangKyGiuongs()}"
 											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 												<%
 													x++;
 												%>
@@ -100,7 +100,7 @@
 
 										<c:forEach items="${giuong2.getDangKyGiuongs()}"
 											var="giuongdangky">
-											<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+											<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 												<%
 													x++;
 												%>

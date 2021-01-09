@@ -56,5 +56,12 @@ public class IMPLEMENT_Service_DangKyGiuong implements SERVICE_DangKyGiuong {
 			return ResponseEntity.ok().build();
 		});
 	}
+	@Override
+	public Optional<DangKyGiuong> updateTinhTrang(long idgiuong, int tinhtrang) {
+		return repository_DangKyGiuong.findById(idgiuong).map(dangkygiuong -> {
+			dangkygiuong.setTinhTrangDangKy(tinhtrang);
+			return repository_DangKyGiuong.save(dangkygiuong);
+		});
+	}
 	
 }
