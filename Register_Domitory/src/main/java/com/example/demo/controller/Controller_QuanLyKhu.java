@@ -93,7 +93,7 @@ public class Controller_QuanLyKhu {
 	public String capNhatThongTinKhu(Model model,HttpServletRequest request) {
 		Khu khu = new Khu();
 		
-		Long idKhu=Long.parseLong(request.getParameter("idkhu"));
+		Long idKhu=Long.parseLong(request.getParameter("idkhu").toString());
 		List<Khu> listKhu = service_Khu.getAll();		
 		
 		String tenKhu=request.getParameter("tenkhu");

@@ -49,7 +49,7 @@
 						<h3>${khu.tenKhu}</h3></a></td>
 					<td>${khu.soTang}</td>
 					<td>${khu.gioiTinh==true ? 'Nam':'Nữ'}</td>
-					<td><a href="/quanly/khu/choncapnhat/${khu.idKhu}">Cập
+					<td><a href="/quanly/khu/chon/khu=${khu.idKhu}">Cập
 							nhật</a></td>
 				</tr>
 			</c:forEach>

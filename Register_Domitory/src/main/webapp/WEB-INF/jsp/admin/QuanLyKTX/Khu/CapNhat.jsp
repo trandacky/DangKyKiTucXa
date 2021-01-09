@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<input name="idkhu" type="hidden"
-								value="${PhongInput.getIdKhu().getIdKhu() }"> <input
+								value="${KhuInput.getIdKhu() }"> <input
 								name="idphong" type="hidden" value="${PhongInput.getIdPhong() }">
 							<div class="form-group" style="padding-left: 70px;">
 								<label>Tên khu: </label> <input class="form-control"
@@ -36,7 +36,7 @@
 							<div class="form-group">
 								<label>Số tầng: </label> <input class="form-control"
 									value="${KhuInput.getSoTang()}" name="sotang"
-									type="number" disable>
+									type="number" disabled>
 							</div>
 						</div>
 						<div class="col-md-3">
@@ -71,17 +71,6 @@
 		
 		</div>
 	</div>
-<!-- <div >
-	<% 
-	int sogiuong= Integer.parseInt(request.getAttribute("sogiuong").toString());
-	for(int i=0;i<sogiuong;i++){ %>
-	<c:forEach items="${PhongInput.getGiuongs()}" var="giuong">
-		<a href="${giuong.getIdGiuong()}"><label class="">${giuong.getViTriGiuong()}</label><img class="img-size" src="/image/bedwhite.jpg"></a>
-		
-		
-	</c:forEach>
-	
-	<%} %>
-	</div> -->	
+
 </div>
 
