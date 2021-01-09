@@ -72,4 +72,45 @@ public class Controller_QuanLyKhu {
 		model.addAttribute("form", "NullFile.jsp");
 		return "redirect:/quanly/khu/";
 	}
+	@RequestMapping(value = { "/chon/khu={idkhu}" }, method = RequestMethod.GET)
+	public String loadFormUpdate(Model model, HttpServletRequest request,@PathVariable long idkhu) {
+		List<Khu> listKhu = service_Khu.getAll();
+		Khu khu = new Khu();
+		
+		khu = service_Khu.getByID(idkhu).get();
+		model.addAttribute("ListKhu", listKhu);
+		model.addAttribute("KhuInput", khu);
+		
+		
+		model.addAttribute("activekhu", "active");
+		
+		model.addAttribute("form", "CapNhat.jsp");
+		int soTang = khu.getSoTang();
+		request.setAttribute("soTang", soTang);
+		return "/admin/QuanLyKTX/QuanLyKhu";
+	}
+	@RequestMapping(value = "/capnhat", method = RequestMethod.POST)
+	public String capNhatThongTinKhu(Model model,HttpServletRequest request) {
+		Khu khu = new Khu();
+		
+		Long idKhu=Long.parseLong(request.getParameter("idkhu"));
+		List<Khu> listKhu = service_Khu.getAll();		
+		
+		String tenKhu=request.getParameter("tenkhu");
+		Boolean gioiTinh=Boolean.parseBoolean(request.getParameter("gioitinh"));
+		khu=service_Khu.getByID(idKhu).get();
+		khu.setIdKhu(idKhu);
+		khu.setTenKhu(tenKhu);
+		khu.setGioiTinh(gioiTinh);
+		service_Khu.update(khu);
+		
+		int soTang = khu.getSoTang();
+		model.addAttribute("ListKhu", listKhu);
+		model.addAttribute("activekhu", "active");
+		model.addAttribute("tenkhu",khu);
+		request.setAttribute("soTang", soTang);
+		model.addAttribute("message", "Cập nhật thành công");
+		model.addAttribute("alert", "success");
+		return "/admin/QuanLyKTX/QuanLyKhu";
+	}
 }

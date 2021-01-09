@@ -20,8 +20,19 @@
 }
 </style>
 <body>
+	
+	
+	
+	
+
+
 	<c:import url="/WEB-INF/jsp/headerAdmin.jsp" />
+	<c:if test="${not empty message}">
+		<div class="alert alert-${alert}">${message}</div>
+	</c:if>
 	<c:import url="/WEB-INF/jsp/admin/QuanLyKTX/Khu/${form}" />
+	<input name="idkhu" value="1" type="hidden">
+	
 	<div class="text-center form-control">
 		<table class="table table-striped">
 			<tr>
