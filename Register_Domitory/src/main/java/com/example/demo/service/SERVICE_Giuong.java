@@ -12,4 +12,5 @@ public interface SERVICE_Giuong {
 	Optional<Object> update(Giuong giuong);
 	Optional<Giuong> getByID(long id);
 	Optional<Object> delete(long id);
+	Optional<Object> updateTinhTrang(long idgiuong, boolean tinhtrang);
 }

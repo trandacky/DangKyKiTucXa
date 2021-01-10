@@ -51,7 +51,7 @@ $.confirm({
 								<c:forEach items="${PhongInput.getGiuongs()}" var="giuong">
 									<c:forEach items="${giuong.getDangKyGiuongs()}"
 										var="giuongdangky">
-										<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+										<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 											<%
 												songuoio++;
 											%>
@@ -116,31 +116,43 @@ $.confirm({
 			<th>Cập nhật</th>
 
 		</tr>
+		
 		<c:forEach items="${PhongInput.getGiuongs()}" var="giuong">
-			<%
+			<c:if test="${giuong.isTinhTrangGiuong()==true}">
+					<%
 				{
 				int dk = 0;
 			%>
+			
 			<c:forEach items="${giuong.getDangKyGiuongs()}" var="dangkygiuong">
 
-				<c:if test="${dangkygiuong.getTinhTrangDangKy()==1}">
+				<c:if test="${dangkygiuong.getTinhTrangDangKy()==0}">
 					<%
 						dk++;
 					%>
+					<form action = "/quanly/khu/phong/chon/capnhat" method ="post">
 					<tr>
-						<td>${giuong.getViTriGiuong()}</td>
-						<td>Trống</td>
-						<td>Trống</td>
-						<td>Trống</td>
-						<td>Trống</td>
-						<td>Trống</td>
-						<td>Trống</td>
-						<td>
-						CHƯA ĐĂNG KÝ
-						</td>
+						
+						<td><input name="iddangkygiuong" type="hidden" value="${dangkygiuong.getIdDangKyGiuong()}">${giuong.getViTriGiuong()}</td>
+						<td><input name="idkhu" type="hidden" value="${giuong.getIdPhong().getIdKhu().getIdKhu()}">
+						<input name="idgiuong" type="hidden" value="${giuong.getIdGiuong()}">
+						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">${dangkygiuong.getTenDangNhap().getHoTen()}</td>
+						<td>${dangkygiuong.getTenDangNhap().getNgayThangNamSinh()}</td>
+						<td>${dangkygiuong.getTenDangNhap().getSoDienThoaiLienHe()}</td>
+						<td>${dangkygiuong.getTenDangNhap().getEmail()}</td>
+						<td>${dangkygiuong.getTenDangNhap().getGioiTinh()==true ? 'Nam':'Nữ'}</td>
+						<td>${dangkygiuong.getNgayDangKy()}</td>
+						<td><select name="tinhtrang" class="form-control">
+							<option style="color: green;" value="0" selected >Đã có người</option>
+							<option style="color: red;"value="1" >Chưa đăng ký</option>
+							<option style="color: yellow;"value="2">Đang chờ...</option>
+							<option style="color: yellow;"value="3">Đang sửa chữa</option>
+						</select></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
 					</tr>
+					</form>
 				</c:if>
-				<c:if test="${dangkygiuong.getTinhTrangDangKy()==0}">
+				<c:if test="${dangkygiuong.getTinhTrangDangKy()==1}">
 					<%
 						dk++; 
 					%>
@@ -149,16 +161,18 @@ $.confirm({
 						
 						<td><input name="iddangkygiuong" type="hidden" value="${dangkygiuong.getIdDangKyGiuong()}">${giuong.getViTriGiuong()}</td>
 						<td><input name="idkhu" type="hidden" value="${giuong.getIdPhong().getIdKhu().getIdKhu()}">
-						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">${dangkygiuong.getTenDangNhap().getHoTen()}</td>
-						<td>${dangkygiuong.getTenDangNhap().getNgayThangNamSinh()}</td>
-						<td>${dangkygiuong.getTenDangNhap().getSoDienThoaiLienHe()}</td>
-						<td>${dangkygiuong.getTenDangNhap().getEmail()}</td>
-						<td>${dangkygiuong.getTenDangNhap().getGioiTinh()==true ? 'Nam':'Nữ'}</td>
-						<td>${dangkygiuong.getNgayDangKy()}</td>
+						<input name="idgiuong" type="hidden" value="${giuong.getIdGiuong()}">
+						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
 						<td><select name="tinhtrang" class="form-control">
-							<option style="color: green;" value="0" selected>Đã có người</option>
-							<option style="color: red;"value="1">Chưa đăng ký</option>
-							<option style="color: yellow;"value="2">Đang chờ...</option>
+							
+							<option style="color: red;"value="1" selected>Chưa đăng ký</option>
+							
+							<option style="color: yellow;"value="3">Đang sửa chữa</option>
 						</select></td>
 						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
 					</tr>
@@ -171,6 +185,7 @@ $.confirm({
 						
 						<td><input name="iddangkygiuong"type="hidden" value="${dangkygiuong.getIdDangKyGiuong()}">${giuong.getViTriGiuong()}</td>
 						<td><input name="idkhu" type="hidden" value="${giuong.getIdPhong().getIdKhu().getIdKhu()}">
+						<input name="idgiuong" type="hidden" value="${giuong.getIdGiuong()}">
 						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">${dangkygiuong.getTenDangNhap().getHoTen()}</td>
 						<td>${dangkygiuong.getTenDangNhap().getNgayThangNamSinh()}</td>
 						<td>${dangkygiuong.getTenDangNhap().getSoDienThoaiLienHe()}</td>
@@ -181,32 +196,67 @@ $.confirm({
 							<option style="color: green;" value="0">Đã có người</option>
 							<option style="color: red;"value="1" >Chưa đăng ký</option>
 							<option style="color: yellow;"value="2"selected>Đang chờ...</option>
+							<option style="color: yellow;"value="3">Đang sửa chữa</option>
 						</select></td>
-						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Thao tác trên sẽ không hoàn lại được! Bạn có chắc thực hiện thao tác?');"></td>
 					</tr>
 				</form>
 					
 				</c:if>
+				
 			</c:forEach>
+			
 			<%
 				if (dk == 0) {
 			%>
 		
-			<tr>
-				<td>${giuong.getViTriGiuong()}</td>
-				<td>Trống</td>
-				<td>Trống</td>
-				<td>Trống</td>
-				<td>Trống</td>
-				<td>Trống</td>
-				<td>Trống</td>
-				<td>CHƯA ĐĂNG KÝ</td>
-			</tr>
-			
+			<form action = "/quanly/khu/phong/chon/capnhat" method ="post">
+					<tr>
+						
+						<td><input name="iddangkygiuong" type="hidden" value="${dangkygiuong.getIdDangKyGiuong()}">${giuong.getViTriGiuong()}</td>
+						<td><input name="idkhu" type="hidden" value="${giuong.getIdPhong().getIdKhu().getIdKhu()}">
+						<input name="idgiuong" type="hidden" value="${giuong.getIdGiuong()}">
+						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td>Trống</td>
+						<td><select name="tinhtrang" class="form-control">
+							
+							<option style="color: red;"value="1" selected>Chưa đăng ký</option>
+							
+							<option style="color: yellow;"value="3">Đang sửa chữa</option>
+						</select></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
+					</tr>
+					</form>
 			<%
 				}
 			}
-			%>
+			%>	
+			</c:if>
+			<c:if test="${giuong.isTinhTrangGiuong()==false }">
+			<form action = "/quanly/khu/phong/chon/capnhat" method ="post">
+				<tr>	
+						<td><input name="idgiuong"type="hidden" value="${giuong.getIdGiuong()}">${giuong.getViTriGiuong()}</td>
+						<td><input name="idkhu" type="hidden" value="${giuong.getIdPhong().getIdKhu().getIdKhu()}">
+						
+						<input name="idphong" type="hidden" value="${giuong.getIdPhong().getIdPhong()}">Trống</td>
+						<td>Trống</td>
+				<td>Trống</td>
+				<td>Trống</td>
+				<td>Trống</td>
+				<td>Trống</td>
+						<td><select name="tinhtrang" class="form-control">
+							<option style="color: green;" value="3"selected>Đang sửa chữa</option>
+							<option style="color: red;"value="4" >Mở đăng ký</option>
+						</select></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Thao tác trên sẽ không hoàn lại được! Bạn có chắc thực hiện thao tác?');"></td>
+					</tr>
+				</form>
+			</c:if>
+		
 			
 		</c:forEach>
 

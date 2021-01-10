@@ -41,12 +41,28 @@ public class Controller_QuanLyGiuong {
 	@RequestMapping(value = {"/khu/phong/chon/capnhat" }, method = RequestMethod.POST)
 	public String index3(Model model, HttpServletRequest request) {
 		String back = request.getHeader("Referer");
-		int tinhtrang = Integer.parseInt(request.getParameter("tinhtrang")); 
-		int iddangkygiuong = Integer.parseInt(request.getParameter("iddangkygiuong"));		
+		 
+	
+			
 		int idkhu = Integer.parseInt(request.getParameter("idkhu"));
 		int idphong = Integer.parseInt(request.getParameter("idphong"));
 		
-		service_DangKyGiuong.updateTinhTrang(iddangkygiuong,tinhtrang);
+		if(request.getParameter("tinhtrang").equals("3")) {
+			boolean tinhtrang = false; 
+			int idgiuong = Integer.parseInt(request.getParameter("idgiuong"));	
+			service_Giuong.updateTinhTrang(idgiuong,tinhtrang);
+		}else
+		if(request.getParameter("tinhtrang").equals("4")) {
+			boolean tinhtrang = true; 
+			int idgiuong = Integer.parseInt(request.getParameter("idgiuong"));	
+			service_Giuong.updateTinhTrang(idgiuong,tinhtrang);
+		}
+		else {
+			int tinhtrang = Integer.parseInt(request.getParameter("tinhtrang"));
+			int iddangkygiuong = Integer.parseInt(request.getParameter("iddangkygiuong"));	
+			service_DangKyGiuong.updateTinhTrang(iddangkygiuong,tinhtrang);
+		}
+
 		
 		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
 		Khu khu = new Khu();
@@ -65,4 +81,6 @@ public class Controller_QuanLyGiuong {
 		model.addAttribute("activegiuong","active");
 		return "redirect:"+back;
 	}
+	
+	
 }

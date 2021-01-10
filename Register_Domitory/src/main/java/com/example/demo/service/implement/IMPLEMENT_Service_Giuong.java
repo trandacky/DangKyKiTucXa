@@ -53,4 +53,13 @@ public class IMPLEMENT_Service_Giuong implements SERVICE_Giuong{
 		});
 	}
 
+	@Override
+	public Optional<Object> updateTinhTrang(long idgiuong, boolean tinhtrang) {
+		return repository_giuong.findById(idgiuong).map(giuong2 -> {
+			giuong2.setTinhTrangGiuong(tinhtrang);
+			return repository_giuong.save(giuong2);
+		});
+	}
+	
+
 }
