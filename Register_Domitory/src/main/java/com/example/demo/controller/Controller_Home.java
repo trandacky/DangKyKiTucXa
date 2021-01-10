@@ -72,19 +72,36 @@ public class Controller_Home {
 		return "/home";
 	}
 
-	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&idphong={idphong}" }, method = RequestMethod.GET)
-	public String chonKhu(Model model, @PathVariable long idkhu, @PathVariable long idphong) {
+	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&tang={tang}" }, method = RequestMethod.GET)
+	public String chonKhu(Model model, @PathVariable long idkhu, @PathVariable long tang) {
 		Khu khu = service_Khu.getByID(idkhu).get();
-		Phong phong = new Phong();
-		phong = service_Phong.getByID(idphong).get();
 		model.addAttribute("headerForm", "HeaderUser.jsp");
 		model.addAttribute("activetrangchu", "active");
 		model.addAttribute("khu", khu);
-		model.addAttribute("phong", phong);
+		model.addAttribute("tang",tang);
+		//model.addAttribute("phong", phong);
 		model.addAttribute("formtang", "tang.jsp");
 		model.addAttribute("formphong", "phong.jsp");
 		List<Khu> listKhu = service_Khu.getAll();
 		model.addAttribute("ListKhu", listKhu);
 		return "/home";
 	}
+	
+	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&tang={tang}" }, method = RequestMethod.POST)
+	public String chonPhong(Model model, HttpServletRequest request, @PathVariable long idkhu, @PathVariable long tang) {
+		Khu khu = service_Khu.getByID(idkhu).get();
+		int phong= Integer.parseInt(request.getParameter("phong"));
+		model.addAttribute("headerForm", "HeaderUser.jsp");
+		model.addAttribute("activetrangchu", "active");
+		model.addAttribute("khu", khu);
+		model.addAttribute("tang",tang);
+		model.addAttribute("phong",phong);
+		//model.addAttribute("phong", phong);
+		model.addAttribute("formtang", "tang.jsp");
+		model.addAttribute("formphong", "phong.jsp");
+		List<Khu> listKhu = service_Khu.getAll();
+		model.addAttribute("ListKhu", listKhu);
+		return "/home";
+	}
+	
 }

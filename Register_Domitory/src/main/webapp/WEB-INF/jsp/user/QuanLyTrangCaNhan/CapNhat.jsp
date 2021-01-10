@@ -8,6 +8,7 @@
 
 </head>
 <body>
+	<c:import url="/WEB-INF/jsp/HeaderUser.jsp" />
 	<form method="post" action="/capnhat/submit">
 		<div class="content form-control">
 			<div class="container-fluid">
@@ -38,8 +39,8 @@
 						<div class="form-group">
 							<label>Giới tính: </label>
 							<input class="form-control"
-								name="gioitinh" value="${taikhoan.gioitinh}"
-								placeholder="${taikhoan.gioitinh}">
+								name="gioitinh" value="${taikhoan.gioiTinh}"
+								placeholder="${taikhoan.gioiTinh}">
 						</div>
 					</div>
 				</div>

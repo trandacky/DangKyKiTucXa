@@ -20,83 +20,85 @@ cancel: function() {alert ('Canceled!')
 }
 }
 )
+
+
 ;
 </style>
 <body>
-<c:import url="/WEB-INF/jsp/HeaderUser.jsp"/>
-<form method="post" action="/trangcanhan">
+	<c:import url="/WEB-INF/jsp/HeaderUser.jsp" />
+
 	<div class="content form-control">
 		<div class="container-fluid">
-			<div class="row">
+			<form method="post" action="/trangcanhan">
+				<div class="row">
 
-				<div class="col-md-3">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Tên đăng nhập: </label> <label>${taikhoan.getTenDangNhap()}</label>
+						<div class="form-group">
+							<label>Tên đăng nhập: </label> <label>${taikhoan.getTenDangNhap()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label>Email: </label> <label>${taikhoan.getEmail()}</label>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Email: </label> <label>${taikhoan.getEmail()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Giới tính: </label> 
-						<label>
-							<c:if test="${taikhoan.getGioiTinh()==true}">Nam</c:if>
-							<c:if test="${taikhoan.getGioiTinh()==false}">Nữ</c:if>
-						</label>
+						<div class="form-group">
+							<label>Giới tính: </label> <label> <c:if
+									test="${taikhoan.getGioiTinh()==true}">Nam</c:if> <c:if
+									test="${taikhoan.getGioiTinh()==false}">Nữ</c:if>
+							</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Họ tên: </label> <label>${taikhoan.getHoTen()}</label>
+						<div class="form-group">
+							<label>Họ tên: </label> <label>${taikhoan.getHoTen()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Ngày tháng năm sinh: </label> <label>${taikhoan.getNgayThangNamSinh()}</label>
+						<div class="form-group">
+							<label>Ngày tháng năm sinh: </label> <label>${taikhoan.getNgayThangNamSinh()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Quê quán: </label> <label>${taikhoan.getQueQuan()}</label>
+						<div class="form-group">
+							<label>Quê quán: </label> <label>${taikhoan.getQueQuan()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-3">
 
-					<div class="form-group">
-						<label>Số điện thoại liên hệ: </label> <label>${taikhoan.getSoDienThoaiLienHe()}</label>
+						<div class="form-group">
+							<label>Số điện thoại liên hệ: </label> <label>${taikhoan.getSoDienThoaiLienHe()}</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-			</div>
+				<div class="row"></div>
 			</form>
 			<div class="row">
 				<div class="clearfix" style="float: left;">
-						<a href="/capnhat/${taikhoan.tenDangNhap}"><button class="btn btn-primary pull-left">
-						Cập nhật thông tin cá nhân</button></a>
-						
-						
-						
+					<a href="/trangcanhan/capnhat/${taikhoan.tenDangNhap}"><button
+							class="btn btn-primary pull-left">Cập nhật thông tin cá
+							nhân</button></a>
+
+
+
 				</div>
 			</div>
 		</div>

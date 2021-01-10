@@ -30,7 +30,7 @@
 	<c:forEach var="i" begin="1" end="${khu.getSoTang()}">
 		<th
 			class="btn btn-outline-success<c:if test="${phong.getTang()==i}"> active</c:if>"><a
-			style="color: purple" href=""><img class="img-size2"
+			style="color: purple" href="/home/khu/idkhu=${khu.getIdKhu()}&tang=${i}"><img class="img-size2"
 				src="/image/tang.jpg"><br>Tầng ${i}</a>
 		<th>
 	</c:forEach>

@@ -34,7 +34,7 @@
 				<c:forEach items="${ListKhu}" var="khu">
 
 					<td class="btn btn-outline-success"><a
-						href="/home/khu/idkhu=${khu.idKhu}&idphong=${khu.getPhongs().get(0).getIdPhong()}"><img src="/image/ktx.jpg"
+						href="/home/khu/idkhu=${khu.idKhu}&tang=<% if(request.getSession().getAttribute("giuong")=="") ;else out.print(1); %>"><img src="/image/ktx.jpg"
 							class="img-size">
 						<h3>${khu.tenKhu}</h3>Số tầng: ${khu.soTang}<br>Giới tính:
 							${khu.gioiTinh==true ? 'Nam':'Nữ'}</a></td>
