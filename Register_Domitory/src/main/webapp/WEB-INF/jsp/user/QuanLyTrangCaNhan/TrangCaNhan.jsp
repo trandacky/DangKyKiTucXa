@@ -23,6 +23,8 @@ cancel: function() {alert ('Canceled!')
 ;
 </style>
 <body>
+<c:import url="/WEB-INF/jsp/HeaderUser.jsp"/>
+<form method="post" action="/trangcanhan">
 	<div class="content form-control">
 		<div class="container-fluid">
 			<div class="row">
@@ -45,7 +47,11 @@ cancel: function() {alert ('Canceled!')
 				<div class="col-md-3">
 
 					<div class="form-group">
-						<label>Giới tính: </label> <label>${taikhoan.getGioiTinh()}</label>
+						<label>Giới tính: </label> 
+						<label>
+							<c:if test="${taikhoan.getGioiTinh()==true}">Nam</c:if>
+							<c:if test="${taikhoan.getGioiTinh()==false}">Nữ</c:if>
+						</label>
 					</div>
 				</div>
 			</div>
@@ -77,15 +83,17 @@ cancel: function() {alert ('Canceled!')
 				<div class="col-md-3">
 
 					<div class="form-group">
-						<label>Số điện thoại liên hệ: </label> <label>${taikhoan.getSoDienLThoaiLienHe()}</label>
+						<label>Số điện thoại liên hệ: </label> <label>${taikhoan.getSoDienThoaiLienHe()}</label>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 			</div>
+			</form>
 			<div class="row">
 				<div class="clearfix" style="float: left;">
-						<a href="/capnhat/${taikhoan.tenDangNhap}"><button class="btn btn-primary pull-left">Cập nhật thông tin cá nhân</button></a>
+						<a href="/capnhat/${taikhoan.tenDangNhap}"><button class="btn btn-primary pull-left">
+						Cập nhật thông tin cá nhân</button></a>
 						
 						
 						
@@ -93,11 +101,5 @@ cancel: function() {alert ('Canceled!')
 			</div>
 		</div>
 	</div>
-	
 </body>
-<!-- <script>
-	function demo() {
-		alert("Cập nhật thành công!");
-	}
-</script> -->
 </html>
