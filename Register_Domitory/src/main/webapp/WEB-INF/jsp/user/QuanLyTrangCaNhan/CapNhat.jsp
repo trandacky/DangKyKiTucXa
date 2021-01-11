@@ -9,22 +9,34 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/HeaderUser.jsp" />
-	<form method="post" action="/capnhat/submit">
+	
 		<div class="content form-control">
 			<div class="container-fluid">
+			<form method="post" action="/trangcanhan/capnhat/submit">
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Tên đăng nhập: </label> <input class="form-control"
-								name="tendangnhap" value="${taikhoan.tenDangNhap}"
+								name="tendangnhaplamcanh" value="${taikhoan.tenDangNhap}"
 								 disabled>
+								 
+								 <input class="form-control"
+								name="tendangnhap" value="${taikhoan.tenDangNhap}"
+								 type="hidden">
+								 
+								 <input class="form-control"
+								name="matkhau" value="${taikhoan.matKhau}" type="hidden">
+								
+								<input class="form-control"
+								name="quyen" value="${taikhoan.quyen}" type="hidden">
+								
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Email: </label>
 							<input class="form-control"
@@ -35,18 +47,20 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Giới tính: </label>
-							<input class="form-control"
-								name="gioitinh" value="${taikhoan.gioiTinh}"
-								placeholder="${taikhoan.gioiTinh}">
+							<select value="${taikhoan.gioiTinh}" class="form-control"
+							name="gioitinh">
+							<option <c:if test="${taikhoan.gioiTinh==true}">selected</c:if> value=true>Nam</option>
+							<option <c:if test="${taikhoan.gioiTinh==false}">selected</c:if> value=false>Nữ</option>
+							</select>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Họ tên: </label>
 							<input class="form-control"
@@ -57,18 +71,16 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Ngày tháng năm sinh: </label>
-							<input class="form-control"
-								name="ngaythangnamsinh" value="${taikhoan.ngayThangNamSinh}"
-								placeholder="${taikhoan.ngayThangNamSinh}">
+							<input class="form-control" value="${taikhoan.ngayThangNamSinh}" type="date" name="ngaythangnamsinh">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Quê quán: </label>
 							<input class="form-control"
@@ -79,7 +91,7 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-md-10">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label>Số điện thoại liên hệ: </label>
 							<input class="form-control"
@@ -89,16 +101,17 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-5">
 						<div class="clearfix" style="float: left;">
 							<button class="btn btn-primary pull-left" onclick="demo()"
 								type="submit">Hoàn tất</button>
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
-	</form>
+	
 	
 </body>
 <script>

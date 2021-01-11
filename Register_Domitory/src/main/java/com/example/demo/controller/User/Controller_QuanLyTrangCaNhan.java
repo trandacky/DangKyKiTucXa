@@ -46,7 +46,7 @@ public class Controller_QuanLyTrangCaNhan {
 		return taiKhoan;
 	}
 	
-	@RequestMapping(value = { "", "/" })
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public String index99(Model model, HttpServletRequest request) {
 
 		String page = "/WEB-INF/jsp/user/QuanLyTrangCaNhan/TrangCaNhan.jsp";
@@ -79,8 +79,12 @@ public class Controller_QuanLyTrangCaNhan {
 		nguoiDung.setQueQuan(request.getParameter("quequan").trim());
 		nguoiDung.setSoDienThoaiLienHe(request.getParameter("sodienthoailienhe").trim());
 		
+		nguoiDung.setMatKhau(request.getParameter("matkhau").trim());
+		nguoiDung.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
+		
 		serviceNguoiDung.update(nguoiDung);
-		return "redirect:/trangcanhan";
+		model.addAttribute("taikhoan", nguoiDung);
+		return "/user/QuanLyTrangCaNhan/TrangCaNhan";
 	}
 	
 }
