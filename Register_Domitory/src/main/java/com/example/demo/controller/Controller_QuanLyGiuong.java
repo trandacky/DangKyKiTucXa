@@ -45,7 +45,7 @@ public class Controller_QuanLyGiuong {
 	
 			
 		int idkhu = Integer.parseInt(request.getParameter("idkhu"));
-		int idphong = Integer.parseInt(request.getParameter("idphong"));
+
 		
 		if(request.getParameter("tinhtrang").equals("3")) {
 			boolean tinhtrang = false; 
@@ -62,23 +62,46 @@ public class Controller_QuanLyGiuong {
 			int iddangkygiuong = Integer.parseInt(request.getParameter("iddangkygiuong"));	
 			service_DangKyGiuong.updateTinhTrang(iddangkygiuong,tinhtrang);
 		}
-
-		
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
 		Khu khu = new Khu();
-		Phong phong = new Phong();
-		phong=service_Phong.getByID(idphong).get();
-		khu = service_Khu.getByID(idkhu).get();
-		model.addAttribute("ListPhong", listPhong);
-		model.addAttribute("PhongInput", phong);
-		model.addAttribute("sogiuong", phong.getGiuongs().size());
-		
-		model.addAttribute("activekhu", "active");
-		model.addAttribute("tenkhu", khu);
-		model.addAttribute("form", "CapNhat.jsp");
+		khu = service_Khu.getByID(idkhu).get();		
 		int soTang = khu.getSoTang();
 		request.setAttribute("soTang", soTang);
-		model.addAttribute("activegiuong","active");
+		return "redirect:"+back;
+	}
+	@RequestMapping(value = {"/khu/phong/chon/phong={idphong}&khu={idkhu}" }, method = RequestMethod.POST)
+	public String themGiuong(Model model, HttpServletRequest request) {
+		String back = request.getHeader("Referer");
+		int idphong = Integer.parseInt(request.getParameter("idphong"));
+		
+		Phong phong = new Phong();
+		Giuong giuong = new Giuong();
+		phong=service_Phong.getByID(idphong).get();
+		for(int i= 0;i<phong.getGiuongs().size();i++) {
+			if(phong.getGiuongs().get(i).getViTriGiuong().equals(request.getParameter("vi-tri-giuong")))
+			{
+				String s = "Giường đã tồn tại";
+				List<Phong> listPhong = service_Khu.getByID(phong.getIdKhu().getIdKhu()).get().getPhongs();
+				Khu khu = new Khu();
+				khu=service_Khu.getByID(phong.getIdKhu().getIdKhu()).get();
+				phong=service_Phong.getByID(idphong).get();
+				model.addAttribute("ListPhong", listPhong);
+				model.addAttribute("PhongInput", phong);
+				model.addAttribute("sogiuong", phong.getGiuongs().size());
+				
+				model.addAttribute("activekhu", "active");
+				model.addAttribute("tenkhu", khu);
+				model.addAttribute("form", "CapNhat.jsp");
+				int soTang = khu.getSoTang();
+				request.setAttribute("soTang", soTang);	
+				request.setAttribute("message", s);
+				request.setAttribute("alert", "danger");
+				return "/admin/QuanLyKTX/QuanLyPhong";
+				
+			}
+		}
+		giuong.setViTriGiuong(request.getParameter("vi-tri-giuong"));
+		giuong.setIdPhong(phong);
+		service_Giuong.setData(giuong);
 		return "redirect:"+back;
 	}
 	

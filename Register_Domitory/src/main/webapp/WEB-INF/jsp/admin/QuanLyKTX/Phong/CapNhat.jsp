@@ -15,6 +15,26 @@
 	max-width: 50px;
 	max-height: 50px;
 }
+.btn-add{
+width: 40%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-control1{
+	width: 56%;
+  padding: 5px 11px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 
 $.confirm({
     title: 'Confirm!',
@@ -180,6 +200,9 @@ $.confirm({
 					
 				</c:if>
 				<c:if test="${dangkygiuong.getTinhTrangDangKy()==2}">
+				<%
+						dk++; 
+					%>
 				<form action = "/quanly/khu/phong/chon/capnhat" method ="post">
 					<tr>
 						
@@ -256,9 +279,21 @@ $.confirm({
 					</tr>
 				</form>
 			</c:if>
-		
 			
 		</c:forEach>
+		
 
 	</table>
+	<div class="col-md-3">
+		<form action="/quanly/khu/phong/chon/phong=${PhongInput.getIdPhong()}&khu=${PhongInput.getIdKhu().getIdKhu()}" method="post">
+			<input name="idkhu" type="hidden" value="${PhongInput.getIdKhu().getIdKhu()}">
+			<input name="idphong" type="hidden" value="${PhongInput.getIdPhong()}">
+			<input class="form-control1"name="vi-tri-giuong" value="" placeholder="Nhập số giường">
+			<input class="btn-add" type="submit" value="Thêm giường">
+		</form>
+		
+		
+	</div>
+	
+	
 </div>
