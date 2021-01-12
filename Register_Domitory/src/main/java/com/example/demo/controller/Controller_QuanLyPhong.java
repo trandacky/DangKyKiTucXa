@@ -116,4 +116,13 @@ public class Controller_QuanLyPhong {
 		model.addAttribute("alert", "success");
 		return "/admin/QuanLyKTX/QuanLyPhong";
 	}
+	@RequestMapping(value = { "/themtang/idkhu={idkhu}" }, method = RequestMethod.GET)
+	public String themTang(Model model, HttpServletRequest request,@PathVariable long idkhu) {
+		String back = request.getHeader("Referer");
+		Khu khu = new Khu();
+		khu = service_Khu.getByID(idkhu).get();
+		khu.setSoTang(khu.getSoTang()+1);
+		service_Khu.setData(khu);
+		return "redirect:"+back;
+	}
 }

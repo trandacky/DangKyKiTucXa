@@ -168,7 +168,7 @@ $.confirm({
 							<option style="color: yellow;"value="2">Đang chờ...</option>
 							<option style="color: yellow;"value="3">Đang sửa chữa</option>
 						</select></td>
-						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Thao tác trên sẽ không hoàn lại được! Bạn có chắc thực hiện thao tác?');"></td>
 					</tr>
 					</form>
 				</c:if>
@@ -194,7 +194,7 @@ $.confirm({
 							
 							<option style="color: yellow;"value="3">Đang sửa chữa</option>
 						</select></td>
-						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Bạn muốn phát phiếu cho toàn bộ các lớp?');"></td>
+						<td><input type="submit" class="btn btn-primary" onclick="return confirm('Thao tác trên sẽ không hoàn lại được! Bạn có chắc thực hiện thao tác?');"></td>
 					</tr>
 					</form>
 					

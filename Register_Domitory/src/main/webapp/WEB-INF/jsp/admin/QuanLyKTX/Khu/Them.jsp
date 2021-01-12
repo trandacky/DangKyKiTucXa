@@ -32,7 +32,7 @@
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label>Số tầng: </label> <input value="8" type="number" max=50 min=0 class="form-control" name="sotang">
+								<label>Số tầng: </label> <input value="0" type="number" max=50 min=0 class="form-control" name="sotang">
 							</div>
 						</div>
 						<div class="col-md-6">

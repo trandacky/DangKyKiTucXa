@@ -46,7 +46,8 @@
 					</li>
 					<li class="nav-item"><a class="nav-link ${activekhu}" href="/quanly/khu">Quản lý khu</a>
 					</li>
-					<li class="nav-item"><a class="nav-link ${activequangcao}" href="/quanly/quangcao">Quảng cáo</a>
+					<li class="nav-item"><a class="nav-link ${activequangcao}" href="/quanly/quangcao">Quảng cáo</a></li>
+					<li class="nav-item"><a class="nav-link ${activedangky}" href="/quanly/modangky">Mở đăng ký</a></li>
 				</ul>
 			
 				<div class="topright">

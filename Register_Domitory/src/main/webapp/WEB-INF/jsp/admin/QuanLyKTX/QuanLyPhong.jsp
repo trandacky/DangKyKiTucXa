@@ -26,6 +26,16 @@
 	max-width: 50px;
 	max-height: 50px;
 }
+$.confirm({
+    title: 'Confirm!',
+    content: 'Simple confirm!',
+    confirm: function(){
+        alert('Confirmed!');
+    },
+    cancel: function(){
+        alert('Canceled!')
+    }
+});
 </style>
 <body>
 	<c:import url="/WEB-INF/jsp/headerAdmin.jsp" />
@@ -124,8 +134,11 @@
 				}
 			%>
 		</table>
-		<a href="/quanly/khu/phong/themtang"><img src="/image/plus.jpg"
+		<button style="border:none;background:white;" onclick="return confirm('Thao tác trên sẽ không hoàn lại được! Bạn có chắc thực hiện thao tác?');">
+			<a href="/quanly/khu/phong/themtang/idkhu=${tenkhu.getIdKhu()}"><img src="/image/plus.jpg"
 			class="img-size"> Thêm Tầng</a>
+		</button>
+		
 	</div>
 
 </body>
