@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.entity.Giuong;
 import com.example.demo.entity.Khu;
 import com.example.demo.entity.NguoiDung;
 import com.example.demo.entity.Phong;
@@ -54,7 +55,6 @@ public class Controller_Home {
 
 		return "/index";
 	}
-
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		model.addAttribute("activetrangchu", "active");
@@ -63,11 +63,13 @@ public class Controller_Home {
 		model.addAttribute("ListKhu", listKhu);
 		model.addAttribute("formtang", "NullFile.jsp");
 		model.addAttribute("formphong", "NullFile.jsp");
+		model.addAttribute("formgiuong", "NullFile.jsp");
 		if (getTaiKhoanDangNhap().getQuyen() != null) {
 			if (getTaiKhoanDangNhap().getQuyen() == 1) {
 				request.getSession().setAttribute("urlAdmin",
 						"<a href=\"/quanly/taikhoan\">Về trang Admin(Quản lý tài khoản)</a>");
 			}
+			request.getSession().setAttribute("taikhoan", getTaiKhoanDangNhap());
 		}
 		return "/home";
 	}
@@ -79,6 +81,7 @@ public class Controller_Home {
 		model.addAttribute("activetrangchu", "active");
 		model.addAttribute("khu", khu);
 		model.addAttribute("tang",tang);
+		model.addAttribute("formgiuong", "NullFile.jsp");
 		//model.addAttribute("phong", phong);
 		model.addAttribute("formtang", "tang.jsp");
 		model.addAttribute("formphong", "phong.jsp");
@@ -90,12 +93,16 @@ public class Controller_Home {
 	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&tang={tang}" }, method = RequestMethod.POST)
 	public String chonPhong(Model model, HttpServletRequest request, @PathVariable long idkhu, @PathVariable long tang) {
 		Khu khu = service_Khu.getByID(idkhu).get();
-		int phong= Integer.parseInt(request.getParameter("phong"));
+		int idphong= Integer.parseInt(request.getParameter("idphong"));
+		List<Giuong> listGiuong= service_Phong.getByID(idphong).get().getGiuongs();
+		
+		model.addAttribute("listgiuong", listGiuong);
 		model.addAttribute("headerForm", "HeaderUser.jsp");
 		model.addAttribute("activetrangchu", "active");
 		model.addAttribute("khu", khu);
 		model.addAttribute("tang",tang);
-		model.addAttribute("phong",phong);
+		model.addAttribute("phong",service_Phong.getByID(idphong).get());
+		model.addAttribute("formgiuong", "giuong.jsp");
 		//model.addAttribute("phong", phong);
 		model.addAttribute("formtang", "tang.jsp");
 		model.addAttribute("formphong", "phong.jsp");
@@ -103,5 +110,10 @@ public class Controller_Home {
 		model.addAttribute("ListKhu", listKhu);
 		return "/home";
 	}
-	
+	@RequestMapping(value = { "/home/dangky/idgiuong={idgiuong}" }, method = RequestMethod.GET)
+	public String dangKy(Model model, HttpServletRequest request, @PathVariable long idgiuong) {
+		model.addAttribute("headerForm", "HeaderUser.jsp");
+		model.addAttribute("activetrangchu", "active");
+		return "/user/dangkygiuong";
+	}
 }

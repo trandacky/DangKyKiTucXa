@@ -30,7 +30,7 @@
 <input name="tang" type="hidden" value="${tang}">
 							<div class="form-group">
 						
-								<label>Tên phòng: </label> <input class="form-control" name="phongso">
+								<label>Tên phòng: </label> <input class="form-control" type="number" name="phongso">
 							</div>
 						</div>
 						<div class="col-md-5">

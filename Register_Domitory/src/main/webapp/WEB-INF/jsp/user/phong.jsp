@@ -26,75 +26,84 @@
 	max-height: 50px;
 }
 </style>
-<div class="text-center form-control">
+<div class="text-center">
 	<table class="table table-striped">
 		<c:forEach items="${khu.getPhongs()}" var="tungphong">
 			<c:if test="${tungphong.getTang()==tang}">
 				<c:if test="${tungphong.tinhTrang==0}">
-					<td >
-				
-							<%
-								int x = 0;
-							%> <c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
+					<td>
+						<%
+							int x = 0;
+						%> <c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
 
-								<c:forEach items="${giuong2.getDangKyGiuongs()}"
-									var="giuongdangky">
-									<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-										<%
-											x++;
-										%>
-									</c:if>
-								</c:forEach>
+							<c:forEach items="${giuong2.getDangKyGiuongs()}"
+								var="giuongdangky">
+								<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+									<%
+										x++;
+									%>
+								</c:if>
+							</c:forEach>
 
-							</c:forEach> <label><%=x%>/${tungphong.getGiuongs().size()}</label><img
-							src="/image/roomwhite.jpg" class="img-size2">
-							<h5>${tungphong.phongSo}</h5>
-							${tungphong.getGiaTien().toString()} VNĐ</td>
+						</c:forEach> <label><%=x%>/${tungphong.getGiuongs().size()}</label><img
+						src="/image/roomwhite.jpg" class="img-size2">
+						<h5>${tungphong.phongSo}</h5> ${tungphong.getGiaTien().toString()}
+						VNĐ
+					</td>
 				</c:if>
 				<c:if test="${tungphong.tinhTrang==1}">
-					<td class="btn btn-outline-success"><form action="/home/khu/idkhu=${khu.getIdKhu()}&tang=${tang}" method="post">
-					<button type="submit" >
-							<%
-								int x = 0;
-							%> <c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
+					<td
+						class="btn btn-outline-success <c:if test="${tungphong.getIdPhong()==phong.getIdPhong()}">active</c:if>"><form
+							action="/home/khu/idkhu=${khu.getIdKhu()}&tang=${tang}"
+							method="post">
+							<input type="hidden" value="${tungphong.getIdPhong()}"
+								name="idphong">
+							<button type="submit" style=" border: none; ">
+								<%
+									int x = 0;
+								%>
 
-								<c:forEach items="${giuong2.getDangKyGiuongs()}"
-									var="giuongdangky">
-									<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-										<%
-											x++;
-										%>
-									</c:if>
+								<c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
+
+									<c:forEach items="${giuong2.getDangKyGiuongs()}"
+										var="giuongdangky">
+										<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+											<%
+												x++;
+											%>
+										</c:if>
+									</c:forEach>
+
 								</c:forEach>
+								<label><%=x%>/${tungphong.getGiuongs().size()}</label> <img
+									src="/image/roomgreen.jpg" class="img-size2">
 
-							</c:forEach> <label><%=x%>/${tungphong.getGiuongs().size()}</label> <img
-							src="/image/roomgreen.jpg" class="img-size2">
-
-							<h5>${tungphong.phongSo}</h5>
-							${tungphong.getGiaTien().toString()} VNĐ
-					</button></form></td>
+								<h5>${tungphong.phongSo}</h5>
+								${tungphong.getGiaTien().toString()} VNĐ
+							</button>
+						</form></td>
 				</c:if>
 				<c:if test="${tungphong.tinhTrang==2}">
 					<td>
-							<%
-								int x = 0;
-							%> <c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
+						<%
+							int x = 0;
+						%> <c:forEach items="${tungphong.getGiuongs()}" var="giuong2">
 
-								<c:forEach items="${giuong2.getDangKyGiuongs()}"
-									var="giuongdangky">
-									<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
-										<%
-											x++;
-										%>
-									</c:if>
-								</c:forEach>
+							<c:forEach items="${giuong2.getDangKyGiuongs()}"
+								var="giuongdangky">
+								<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+									<%
+										x++;
+									%>
+								</c:if>
+							</c:forEach>
 
-							</c:forEach> <label><%=x%>/${tungphong.getGiuongs().size()}</label> <img
-							src="/image/roomred.jpg" class="img-size2">
+						</c:forEach> <label><%=x%>/${tungphong.getGiuongs().size()}</label> <img
+						src="/image/roomred.jpg" class="img-size2">
 
-							<h5>${tungphong.phongSo}</h5>
-							${tungphong.getGiaTien().toString()} VNĐ
-				</td>
+						<h5>${tungphong.phongSo}</h5> ${tungphong.getGiaTien().toString()}
+						VNĐ
+					</td>
 				</c:if>
 			</c:if>
 		</c:forEach>

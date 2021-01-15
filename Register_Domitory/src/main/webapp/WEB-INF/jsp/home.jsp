@@ -31,18 +31,19 @@
 	<div class="text-center form-control">
 		<table class="table table-striped">
 			<tr>
-				<c:forEach items="${ListKhu}" var="khu">
+				<c:forEach items="${ListKhu}" var="khuv">
 
-					<td class="btn btn-outline-success"><a
-						href="/home/khu/idkhu=${khu.idKhu}&tang=<% if(request.getSession().getAttribute("giuong")=="") ;else out.print(1); %>"><img src="/image/ktx.jpg"
+					<td class="btn btn-outline-success <c:if test="${khuv.getIdKhu()==khu.getIdKhu()}">active</c:if>"><a
+						href="/home/khu/idkhu=${khuv.idKhu}&tang=<% if(request.getSession().getAttribute("giuong")=="") ;else out.print(1); %>"><img src="/image/ktx.jpg"
 							class="img-size">
-						<h3>${khu.tenKhu}</h3>Số tầng: ${khu.soTang}<br>Giới tính:
-							${khu.gioiTinh==true ? 'Nam':'Nữ'}</a></td>
+						<h3>${khuv.tenKhu}</h3>Số tầng: ${khuv.soTang}<br>Giới tính:
+							${khuv.gioiTinh==true ? 'Nam':'Nữ'}</a></td>
 				</c:forEach>
 			</tr>
 		</table>
 	</div>
 	<c:import url="/WEB-INF/jsp/user/${formtang}"/>
 	<c:import url="/WEB-INF/jsp/user/${formphong}"/>
+	<c:import url="/WEB-INF/jsp/user/${formgiuong}"/>
 </body>
 </html>

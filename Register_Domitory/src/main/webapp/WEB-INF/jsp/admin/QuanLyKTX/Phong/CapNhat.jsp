@@ -59,7 +59,7 @@ $.confirm({
 								value="${PhongInput.getIdKhu().getIdKhu() }"> <input
 								name="idphong" type="hidden" value="${PhongInput.getIdPhong() }">
 							<div class="form-group" style="padding-left: 70px;">
-								<label>Tên phòng: </label> <input class="form-control"
+								<label>Tên phòng: </label> <input type="number" class="form-control"
 									value="${PhongInput.getPhongSo()}" name="phongso">
 							</div>
 						</div>

@@ -28,12 +28,13 @@ public class Controller_MoDangKy {
 	@RequestMapping(value = { "","/" }, method = RequestMethod.GET)
 	public String index2(Model model) {
 		MoDangKy modangky = new MoDangKy();
+		if(service_MoDangKy.getAll().isEmpty()) { model.addAttribute("activedangky","active");	
+		return "/admin/QuanLyKTX/MoDangKy";}
 		modangky = service_MoDangKy.getByID((long)1).get();
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 		model.addAttribute("thoigianmo", formatter.format(modangky.getThoiGianMo()));
 		model.addAttribute("thoigiandong",  formatter.format(modangky.getThoiGianDong()));
 		model.addAttribute("activedangky","active");	
-		System.out.println(modangky.getThoiGianMo()+","+modangky.getThoiGianDong());
 		return "/admin/QuanLyKTX/MoDangKy";
 	}
 	@RequestMapping(value = { "","/" }, method = RequestMethod.POST)
