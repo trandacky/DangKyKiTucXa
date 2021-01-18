@@ -26,12 +26,16 @@
 	max-height: 50px;
 }
 </style>
+<div class="text-center"><h3>Tầng</h3></div>
 <table class="table table-striped text-center">
 	<c:forEach var="i" begin="1" end="${khu.getSoTang()}">
-		<th
-			class="btn btn-outline-success<c:if test="${tang==i}"> active</c:if>"><a
-			style="color: purple" href="/home/khu/idkhu=${khu.getIdKhu()}&tang=${i}"><img class="img-size2"
-				src="/image/tang.jpg"><br>Tầng ${i}</a>
+		<th><a href="/home/khu/idkhu=${khu.getIdKhu()}&tang=${i}">
+				<button
+					class="btn btn-outline-success<c:if test="${tang==i}"> active</c:if>">
+					<img class="img-size2" src="/image/tang.jpg"><br>Tầng
+					${i}
+				</button>
+		</a>
 		<th>
 	</c:forEach>
 

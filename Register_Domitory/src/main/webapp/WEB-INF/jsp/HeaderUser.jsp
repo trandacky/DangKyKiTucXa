@@ -42,7 +42,9 @@
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a class="nav-link ${activetrangchu}" href="/home">Trang chủ</a>
 					</li>
-					<li class="nav-item"><a class="nav-link ${activetrangcanhan}" href="/trangcanhan">Tài khoản</a>
+					<li class="nav-item"><a class="nav-link ${activetrangcanhan}" href="/nguoidung/trangcanhan">Trang cá nhân</a>
+					</li>
+					<li class="nav-item"><a class="nav-link ${activelichsu}" href="/nguoidung/lichsu">Lịch sử đăng ký</a>
 					</li>
 				
 				</ul>

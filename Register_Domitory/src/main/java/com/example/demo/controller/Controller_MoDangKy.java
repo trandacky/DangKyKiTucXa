@@ -31,7 +31,7 @@ public class Controller_MoDangKy {
 		if(service_MoDangKy.getAll().isEmpty()) { model.addAttribute("activedangky","active");	
 		return "/admin/QuanLyKTX/MoDangKy";}
 		modangky = service_MoDangKy.getByID((long)1).get();
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		model.addAttribute("thoigianmo", formatter.format(modangky.getThoiGianMo()));
 		model.addAttribute("thoigiandong",  formatter.format(modangky.getThoiGianDong()));
 		model.addAttribute("activedangky","active");	
@@ -44,7 +44,7 @@ public class Controller_MoDangKy {
 		MoDangKy modangky = new MoDangKy();
 		String mo = request.getParameter("thoigianmo");
 		String dong = request.getParameter("thoigiandong");
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		Date date = (Date)formatter.parse(mo);
 		modangky.setThoiGianMo(date);
 		Date datedong = (Date)formatter.parse(dong);

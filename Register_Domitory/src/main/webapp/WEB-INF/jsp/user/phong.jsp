@@ -26,6 +26,7 @@
 	max-height: 50px;
 }
 </style>
+<div class="text-center"><h3>Phòng</h3></div>
 <div class="text-center">
 	<table class="table table-striped">
 		<c:forEach items="${khu.getPhongs()}" var="tungphong">
@@ -38,7 +39,7 @@
 
 							<c:forEach items="${giuong2.getDangKyGiuongs()}"
 								var="giuongdangky">
-								<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+								<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 									<%
 										x++;
 									%>
@@ -52,13 +53,14 @@
 					</td>
 				</c:if>
 				<c:if test="${tungphong.tinhTrang==1}">
-					<td
-						class="btn btn-outline-success <c:if test="${tungphong.getIdPhong()==phong.getIdPhong()}">active</c:if>"><form
+					<td><form
 							action="/home/khu/idkhu=${khu.getIdKhu()}&tang=${tang}"
 							method="post">
 							<input type="hidden" value="${tungphong.getIdPhong()}"
 								name="idphong">
-							<button type="submit" style=" border: none; ">
+							<button
+								class="btn btn-outline-success <c:if test="${tungphong.getIdPhong()==phong.getIdPhong()}">active</c:if>"
+								type="submit" style="border: none;">
 								<%
 									int x = 0;
 								%>
@@ -67,7 +69,7 @@
 
 									<c:forEach items="${giuong2.getDangKyGiuongs()}"
 										var="giuongdangky">
-										<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+										<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 											<%
 												x++;
 											%>
@@ -91,7 +93,7 @@
 
 							<c:forEach items="${giuong2.getDangKyGiuongs()}"
 								var="giuongdangky">
-								<c:if test="${giuongdangky.getTinhTrangDangKy()==1}">
+								<c:if test="${giuongdangky.getTinhTrangDangKy()==0}">
 									<%
 										x++;
 									%>

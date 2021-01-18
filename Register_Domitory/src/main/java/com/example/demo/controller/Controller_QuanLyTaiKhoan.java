@@ -48,7 +48,8 @@ public class Controller_QuanLyTaiKhoan {
 		model.addAttribute("FormUpdateOrAdd", "/WEB-INF/jsp/admin/QuanLyTaiKhoan/Them.jsp");
 		model.addAttribute("ListNguoiDung", listNguoiDung);
 		model.addAttribute("activetaikhoan", "active");
-		request.getSession().setAttribute("tennguoidung","");// getTaiKhoanDangNhap().getHoTen());
+		
+		request.getSession().setAttribute("tennguoidung",getTaiKhoanDangNhap().getHoTen());// getTaiKhoanDangNhap().getHoTen());
 		return "/admin/QuanLyTaiKhoan/QuanLyTaiKhoan";
 	}
 

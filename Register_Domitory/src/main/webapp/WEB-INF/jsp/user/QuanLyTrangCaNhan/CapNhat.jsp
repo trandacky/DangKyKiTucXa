@@ -12,7 +12,7 @@
 	
 		<div class="content form-control">
 			<div class="container-fluid">
-			<form method="post" action="/trangcanhan/capnhat/submit">
+			<form method="post" action="/nguoidung/trangcanhan/capnhat/submit">
 				<div class="row">
 					
 					<div class="col-md-5">

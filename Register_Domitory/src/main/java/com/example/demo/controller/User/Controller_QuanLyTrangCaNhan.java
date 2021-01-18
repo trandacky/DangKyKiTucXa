@@ -24,7 +24,7 @@ import com.example.demo.service.SERVICE_NguoiDung;
 
 
 @Controller
-@RequestMapping(value = "/trangcanhan" )
+@RequestMapping(value = "/nguoidung/trangcanhan" )
 public class Controller_QuanLyTrangCaNhan {
 	@Autowired
 	private SERVICE_NguoiDung serviceNguoiDung;
@@ -84,7 +84,7 @@ public class Controller_QuanLyTrangCaNhan {
 		
 		serviceNguoiDung.update(nguoiDung);
 		model.addAttribute("taikhoan", nguoiDung);
-		return "/user/QuanLyTrangCaNhan/TrangCaNhan";
+		return "redirect:/nguoidung/trangcanhan";
 	}
 	
 }

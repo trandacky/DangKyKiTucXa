@@ -22,7 +22,7 @@ public class DangKyGiuong {
 	private Long idDangKyGiuong;
 	
 	@Column(name = "ngay_dang_ky")
-	private LocalDate ngayDangKy= LocalDate.now();
+	private Date ngayDangKy = new Date();
 	
 	@Column(name = "tinh_trang_dang_ky")
 	private Integer tinhTrangDangKy = 0;
@@ -46,12 +46,18 @@ public class DangKyGiuong {
 		this.idDangKyGiuong = idDangKyGiuong;
 	}
 
-	public LocalDate getNgayDangKy() {
+
+
+	public Date getNgayDangKy() {
 		return ngayDangKy;
 	}
 
-	public void setNgayDangKy(LocalDate ngayDangKy) {
+	public void setNgayDangKy(Date ngayDangKy) {
 		this.ngayDangKy = ngayDangKy;
+	}
+
+	public void setTinhTrangDangKy(Integer tinhTrangDangKy) {
+		this.tinhTrangDangKy = tinhTrangDangKy;
 	}
 
 	public NguoiDung getTenDangNhap() {
@@ -74,9 +80,6 @@ public class DangKyGiuong {
 		return tinhTrangDangKy;
 	}
 
-	public void setTinhTrangDangKy(int tinhTrangDangKy) {
-		this.tinhTrangDangKy = tinhTrangDangKy;
-	}
 
 
 	

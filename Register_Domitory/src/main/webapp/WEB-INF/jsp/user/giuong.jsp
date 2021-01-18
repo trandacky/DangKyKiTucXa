@@ -40,59 +40,113 @@ cancel: function() {alert ('Canceled!')
 )
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;
 </style>
+<div class="text-center">
+	<h3>Giường</h3>
+</div>
 <body>
-	<table class="table table-striped text-center">
-		<c:forEach items="${listgiuong}" var="giuong">
-			<tr class="text-center">
-				<c:if test="${giuong.isTinhTrangGiuong()==true}">
+	<div class="text-center">
+		<table class="table table-striped text-center">
+			<c:forEach items="${listgiuong}" var="giuong">
+				<tr class="text-center">
+					<c:if test="${giuong.isTinhTrangGiuong()==true}">
+						<%
+							int nguoidangky = 0;
+						int nguoio = 0;
+						%>
+						<c:forEach items="${giuong.getDangKyGiuongs()}" var="dangkygiuong">
+							<c:if test="${dangkygiuong.getTinhTrangDangKy()==2}">
+								<%
+									nguoidangky++;
+								%>
+							</c:if>
+							<c:if test="${dangkygiuong.getTinhTrangDangKy()==0}">
+								<%
+									nguoio++;
+								%>
+							</c:if>
+
+						</c:forEach>
+
+						<%
+							if (1 <= nguoidangky) {
+						%>
+						<img src="/image/bedyellow.jpg" class="img-size">
+						${giuong.getViTriGiuong()}
 					<%
-						int nguoidangky = 0;
-					int nguoio = 0;
+						}
 					%>
-					<c:forEach items="${giuong.getDangKyGiuongs()}" var="dangkygiuong">
-						<c:if test="${dangkygiuong.getTinhTrangDangKy()==2}">
-							<%
-								nguoidangky++;
-							%>
+						<%
+							if (1 <= nguoio) {
+						%>
+						<img src="/image/bedred.jpg" class="img-size">
+						${giuong.getViTriGiuong()}
+					<%
+						}
+					%>
+						<%
+							if (0 == nguoio && 0 == nguoidangky) {
+						%>
+						<c:if test="${disable==true}">
+							<form action="/nguoidung/dangky/idgiuong=${giuong.getIdGiuong()}" method="post"><button
+									class="btn btn-outline-success"
+									<c:if test="${giuongdadangky!=null }">onclick="return confirm('Bạn muôn chuyển vào giường ${giuong.getViTriGiuong()} phòng: ${phong.getPhongSo() } tầng: ${tang} khu: ${khu.getTenKhu()}?');"</c:if>
+									<c:if test="${giuongdadangky==null}">onclick="return confirm('Bạn muôn đăng ký vào giường ${giuong.getViTriGiuong()} phòng: ${phong.getPhongSo() } tầng: ${tang} khu: ${khu.getTenKhu()}?');"</c:if>>
+									<img src="/image/bedgreen.jpg" class="img-size"> <br>
+									${giuong.getViTriGiuong()}
+								</button>
+								<input type="hidden" value="${giuongdadangky }" name="giuongdadangky">
+								</form>
 						</c:if>
-						<c:if test="${dangkygiuong.getTinhTrangDangKy()==0}">
-							<%
-								nguoio++;
-							%>
+						<c:if test="${disable==false}">
+							<img src="/image/bedgreen.jpg" class="img-size">
+							${giuong.getViTriGiuong()}
 						</c:if>
+						<%
+							}
+						%>
 
-					</c:forEach>
+						<%-- <c:if test="${giuong.getDangKyGiuongs().isEmpty()}">
+							<c:if test="${disable==true}">
+								<a href="/home/dangky/idgiuong=${giuong.getIdGiuong()}"><button
+										class="btn btn-outline-success"
+										onclick="return confirm('Bạn muôn đăng ký vào giường ${giuong.getViTriGiuong()} phòng: ${phong.getPhongSo() } tầng: ${tang} khu: ${khu.getTenKhu()}?');">
+										<img src="/image/bedgreen.jpg" class="img-size">
+										${giuong.getViTriGiuong()}
+									</button></a>
+							</c:if>
+							<c:if test="${disable==false}">
+								<img src="/image/bedgreen.jpg" class="img-size">
+							</c:if>
 
-					<c:if test="${nguoidangky>=1}">
-						<img src="/image/bedyellow.jpg" class="img-size2">
+						</c:if> --%>
 					</c:if>
-					<c:if test="${nguoio>=1}">
-						<img src="/image/bedred.jpg" class="img-size2">
-					</c:if>
-					<c:if test="${nguoio==0&&nguoidangky==0}">
-						<button style="border: none; background: white;"
-							onclick="return confirm('Bạn muôn đăng ký vào giường ${giuong.getViTriGiuong()} phòng: ${phong.getPhongSo() } tầng: ${tang} khu: ${khu.getTenKhu()}?');">
-							<a href="/home/dangky/idgiuong=${giuong.getIdGiuong()}"><img
-								src="/image/bedgreen.jpg" class="img-size2"></a>
-						</button>
-					</c:if>
-					<c:if test="${dangkygiuong==null}">
-						<button style="border: none; background: white;"
-							onclick="return confirm('Bạn muôn đăng ký vào giường ${giuong.getViTriGiuong()} phòng: ${phong.getPhongSo() } tầng: ${tang} khu: ${khu.getTenKhu()}?');">
-							<a href="/home/dangky/idgiuong=${giuong.getIdGiuong()}"><img
-								src="/image/bedgreen.jpg" class="img-size2"></a>
-						</button>
-					</c:if>
+					<c:if test="${giuong.isTinhTrangGiuong()==false}">
+						<img src="/image/bedwhite.jpg" class="img-size">
+					${giuong.getViTriGiuong()}
 				</c:if>
-				<c:if test="${giuong.isTinhTrangGiuong()==false}">
-
-					<img src="/image/bedwhite.jpg" class="img-size2">
-
-				</c:if>
-			</tr>
-		</c:forEach>
-	</table>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

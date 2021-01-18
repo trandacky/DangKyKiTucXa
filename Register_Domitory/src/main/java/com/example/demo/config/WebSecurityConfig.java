@@ -49,14 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Các trang không yêu cầu login
-		http.authorizeRequests().antMatchers("/*", "/index", "/logout").permitAll();
+		http.authorizeRequests().antMatchers("/*", "/home/*", "/index", "/logout").permitAll();
 
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
- //       http.authorizeRequests().antMatchers("/home/*").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')");
+       http.authorizeRequests().antMatchers("/home/*","/nguoidung/*","/nguoidung/dangky/*").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')");
 
 		// Trang chỉ dành cho ADMIN
-//       http.authorizeRequests().antMatchers("/quanly/*").access("hasRole('ROLE_ADMIN')");
+       http.authorizeRequests().antMatchers("/quanly/*").access("hasRole('ROLE_ADMIN')");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,

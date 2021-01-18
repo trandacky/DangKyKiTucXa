@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Trang cá nhân</title>
 </head>
 <style>
 $
@@ -29,7 +29,7 @@ cancel: function() {alert ('Canceled!')
 
 	<div class="content form-control">
 		<div class="container-fluid">
-			<form method="post" action="/trangcanhan">
+			<form method="post" action="/nguoidung/trangcanhan">
 				<div class="row">
 
 					<div class="col-md-3">
@@ -93,7 +93,7 @@ cancel: function() {alert ('Canceled!')
 			</form>
 			<div class="row">
 				<div class="clearfix" style="float: left;">
-					<a href="/trangcanhan/capnhat/${taikhoan.tenDangNhap}"><button
+					<a href="/nguoidung/trangcanhan/capnhat/${taikhoan.tenDangNhap}"><button
 							class="btn btn-primary pull-left">Cập nhật thông tin cá
 							nhân</button></a>
 
