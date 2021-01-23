@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +46,7 @@ public class Controller_Home {
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		model.addAttribute("activetrangchu", "active");
-		List<Khu> listKhu = service_Khu.getAll();
+		List<Khu> listKhu = service_Khu.findAll();
 		model.addAttribute("headerForm", "HeaderUser.jsp");
 		model.addAttribute("ListKhu", listKhu);
 		model.addAttribute("formtang", "NullFile.jsp");
@@ -60,7 +58,7 @@ public class Controller_Home {
 
 	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&tang={tang}" }, method = RequestMethod.GET)
 	public String chonKhu(Model model, @PathVariable long idkhu, @PathVariable long tang, HttpServletRequest request) {
-		Khu khu = service_Khu.getByID(idkhu).get();
+		Khu khu = service_Khu.findById(idkhu).get();
 		model.addAttribute("headerForm", "HeaderUser.jsp");
 		model.addAttribute("activetrangchu", "active");
 		model.addAttribute("khu", khu);
@@ -69,7 +67,7 @@ public class Controller_Home {
 		// model.addAttribute("phong", phong);
 		model.addAttribute("formtang", "tang.jsp");
 		model.addAttribute("formphong", "phong.jsp");
-		List<Khu> listKhu = service_Khu.getAll();
+		List<Khu> listKhu = service_Khu.findAll();
 		model.addAttribute("ListKhu", listKhu);
 		setGiaTriChoViewtheoTungSession(model, request);
 		return "/home";
@@ -78,26 +76,26 @@ public class Controller_Home {
 	@RequestMapping(value = { "/home/khu/idkhu={idkhu}&tang={tang}" }, method = RequestMethod.POST)
 	public String chonPhong(Model model, HttpServletRequest request, @PathVariable long idkhu,
 			@PathVariable long tang) {
-		Khu khu = service_Khu.getByID(idkhu).get();
+		Khu khu = service_Khu.findById(idkhu).get();
 		int idphong = Integer.parseInt(request.getParameter("idphong"));
-		List<Giuong> listGiuong = service_Phong.getByID(idphong).get().getGiuongs();
+		List<Giuong> listGiuong = service_Phong.findById(idphong).get().getGiuongs();
 		model.addAttribute("listgiuong", listGiuong);
 		model.addAttribute("headerForm", "HeaderUser.jsp");
 		model.addAttribute("activetrangchu", "active");
 		model.addAttribute("khu", khu);
 		model.addAttribute("tang", tang);
-		model.addAttribute("phong", service_Phong.getByID(idphong).get());
+		model.addAttribute("phong", service_Phong.findById(idphong).get());
 		model.addAttribute("formgiuong", "giuong.jsp");
 		// model.addAttribute("phong", phong);
 		model.addAttribute("formtang", "tang.jsp");
 		model.addAttribute("formphong", "phong.jsp");
-		List<Khu> listKhu = service_Khu.getAll();
+		List<Khu> listKhu = service_Khu.findAll();
 		setGiaTriChoViewtheoTungSession(model, request);
 		model.addAttribute("ListKhu", listKhu);
 		return "/home";
 	}
 
-	public NguoiDung getTaiKhoanDangNhap() {
+	private NguoiDung getTaiKhoanDangNhap() {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
@@ -107,14 +105,14 @@ public class Controller_Home {
 			username = principal.toString();
 		}
 		NguoiDung taiKhoan = new NguoiDung();
-		List<NguoiDung> listTaiKhoan = service_NguoiDung.getByID(username);
+		List<NguoiDung> listTaiKhoan = service_NguoiDung.findById(username);
 		if (!listTaiKhoan.isEmpty()) {
 			taiKhoan = listTaiKhoan.get(0);
 		}
 		return taiKhoan;
 	}
 
-	public void setGiaTriChoViewtheoTungSession(Model model, HttpServletRequest request) {
+	private void setGiaTriChoViewtheoTungSession(Model model, HttpServletRequest request) {
 
 		NguoiDung nguoiDung = getTaiKhoanDangNhap();
 		Date date = new Date();

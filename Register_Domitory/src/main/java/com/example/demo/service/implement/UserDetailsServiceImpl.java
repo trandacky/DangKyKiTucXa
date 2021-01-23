@@ -23,11 +23,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		NguoiDung nguoiDung = new NguoiDung();
-		if (serviceNguoidung.getByID(username).isEmpty())
+		if (serviceNguoidung.findById(username).isEmpty())
 			throw new UsernameNotFoundException("User " + username + " was not found in the database");
 
 		try {
-			nguoiDung = serviceNguoidung.getByID(username).get(0);
+			nguoiDung = serviceNguoidung.findById(username).get(0);
 		} catch (Exception e) {
 
 			throw new UsernameNotFoundException("User " + username + " was not found in the database");

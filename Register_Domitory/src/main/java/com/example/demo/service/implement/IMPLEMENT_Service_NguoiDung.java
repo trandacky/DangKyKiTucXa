@@ -3,7 +3,6 @@ package com.example.demo.service.implement;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,25 +19,25 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 	}
 
 	@Override
-	public List<NguoiDung> getAll() {
+	public List<NguoiDung> findAll() {
 		// TODO Auto-generated method stub
 		return repository_NguoiDung.findAllByOrderByTenDangNhapAsc();
 	}
 
 	@Override
-	public List<NguoiDung> getByID(String id) {
+	public List<NguoiDung> findById(String id) {
 		// TODO Auto-generated method stub
 		return repository_NguoiDung.findByTenDangNhapLike(id);
 	}
 
 	@Override
-	public NguoiDung setData(NguoiDung nguoiDung) {
+	public NguoiDung saveOne(NguoiDung nguoiDung) {
 		// TODO Auto-generated method stub
 		return repository_NguoiDung.save(nguoiDung);
 	}
 
 	@Override
-	public Optional<Object> update(NguoiDung nguoiDung) {
+	public Optional<Object> updateOne(NguoiDung nguoiDung) {
 		return repository_NguoiDung.findById(nguoiDung.getTenDangNhap()).map(nguoidung -> {
 			nguoidung = nguoiDung;
 			return repository_NguoiDung.save(nguoidung);
@@ -46,7 +45,7 @@ public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
 	}
 
 	@Override
-	public Optional<Object> delete(String id) {
+	public Optional<Object> deleteById(String id) {
 		return repository_NguoiDung.findById(id).map(nguoidung -> {
 			repository_NguoiDung.delete(nguoidung);
 			return ResponseEntity.ok().build();

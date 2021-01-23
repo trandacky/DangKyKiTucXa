@@ -63,7 +63,7 @@ public class Controller_QuanLyGiuong {
 			service_DangKyGiuong.updateTinhTrang(iddangkygiuong,tinhtrang);
 		}
 		Khu khu = new Khu();
-		khu = service_Khu.getByID(idkhu).get();		
+		khu = service_Khu.findById(idkhu).get();		
 		int soTang = khu.getSoTang();
 		request.setAttribute("soTang", soTang);
 		return "redirect:"+back;
@@ -75,15 +75,15 @@ public class Controller_QuanLyGiuong {
 		
 		Phong phong = new Phong();
 		Giuong giuong = new Giuong();
-		phong=service_Phong.getByID(idphong).get();
+		phong=service_Phong.findById(idphong).get();
 		for(int i= 0;i<phong.getGiuongs().size();i++) {
 			if(phong.getGiuongs().get(i).getViTriGiuong().equals(request.getParameter("vi-tri-giuong")))
 			{
 				String s = "Giường đã tồn tại";
-				List<Phong> listPhong = service_Khu.getByID(phong.getIdKhu().getIdKhu()).get().getPhongs();
+				List<Phong> listPhong = service_Khu.findById(phong.getIdKhu().getIdKhu()).get().getPhongs();
 				Khu khu = new Khu();
-				khu=service_Khu.getByID(phong.getIdKhu().getIdKhu()).get();
-				phong=service_Phong.getByID(idphong).get();
+				khu=service_Khu.findById(phong.getIdKhu().getIdKhu()).get();
+				phong=service_Phong.findById(idphong).get();
 				model.addAttribute("ListPhong", listPhong);
 				model.addAttribute("PhongInput", phong);
 				model.addAttribute("sogiuong", phong.getGiuongs().size());

@@ -19,25 +19,25 @@ public class IMPLEMENT_Service_Khu implements SERVICE_Khu {
 	}
 
 	@Override
-	public List<Khu> getAll() {
+	public List<Khu> findAll() {
 		// TODO Auto-generated method stub
 		return repository_Khu.findAllByOrderByIdKhuAsc();
 	}
 
 	@Override
-	public Optional<Khu> getByID(long id) {
+	public Optional<Khu> findById(long id) {
 		// TODO Auto-generated method stub
 		return repository_Khu.findById(id);
 	}
 
 	@Override
-	public Khu setData(Khu khu) {
+	public Khu saveOne(Khu khu) {
 		// TODO Auto-generated method stub
 		return repository_Khu.save(khu);
 	}
 
 	@Override
-	public Optional<Object> update(Khu khu) {
+	public Optional<Object> updateOne(Khu khu) {
 		return repository_Khu.findById(khu.getIdKhu()).map(khu2 -> {
 			khu2 = khu;
 			return repository_Khu.save(khu2);
@@ -45,7 +45,7 @@ public class IMPLEMENT_Service_Khu implements SERVICE_Khu {
 	}
 
 	@Override
-	public Optional<Object> delete(long id) {
+	public Optional<Object> deleteOneById(long id) {
 		return repository_Khu.findById(id).map(khu2 -> {
 			repository_Khu.delete(khu2);
 			return ResponseEntity.ok().build();
