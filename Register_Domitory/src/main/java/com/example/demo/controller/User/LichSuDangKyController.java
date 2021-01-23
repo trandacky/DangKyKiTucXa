@@ -15,11 +15,11 @@ import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value="/nguoidung")
-public class Controller_LichSuDangKy {
+public class LichSuDangKyController {
 	@Autowired
 	private NguoiDungService service_NguoiDung;
 	@RequestMapping(value="/lichsu")
-	private String xemLichSuDangKy(Model model)
+	public String xemLichSuDangKy(Model model)
 	{
 		model.addAttribute("activelichsu","active");
 		model.addAttribute("listlichsu",getTaiKhoanDangNhap().getDangKyGiuongs());

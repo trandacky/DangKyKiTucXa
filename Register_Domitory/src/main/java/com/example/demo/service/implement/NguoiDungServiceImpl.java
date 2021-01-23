@@ -11,43 +11,43 @@ import com.example.demo.repository.REPOSITORY_NguoiDung;
 import com.example.demo.service.NguoiDungService;
 @Service
 public class NguoiDungServiceImpl implements NguoiDungService {
-	private final REPOSITORY_NguoiDung repository_NguoiDung;
+	private final REPOSITORY_NguoiDung nguoiDungRepository;
 
 	public NguoiDungServiceImpl(REPOSITORY_NguoiDung repository_NguoiDung) {
 		super();
-		this.repository_NguoiDung = repository_NguoiDung;
+		this.nguoiDungRepository = repository_NguoiDung;
 	}
 
 	@Override
 	public List<NguoiDung> findAll() {
 		// TODO Auto-generated method stub
-		return repository_NguoiDung.findAllByOrderByTenDangNhapAsc();
+		return nguoiDungRepository.findAllByOrderByTenDangNhapAsc();
 	}
 
 	@Override
 	public List<NguoiDung> findById(String id) {
 		// TODO Auto-generated method stub
-		return repository_NguoiDung.findByTenDangNhapLike(id);
+		return nguoiDungRepository.findByTenDangNhapLike(id);
 	}
 
 	@Override
 	public NguoiDung saveOne(NguoiDung nguoiDung) {
 		// TODO Auto-generated method stub
-		return repository_NguoiDung.save(nguoiDung);
+		return nguoiDungRepository.save(nguoiDung);
 	}
 
 	@Override
 	public Optional<Object> updateOne(NguoiDung nguoiDung) {
-		return repository_NguoiDung.findById(nguoiDung.getTenDangNhap()).map(nguoidung -> {
+		return nguoiDungRepository.findById(nguoiDung.getTenDangNhap()).map(nguoidung -> {
 			nguoidung = nguoiDung;
-			return repository_NguoiDung.save(nguoidung);
+			return nguoiDungRepository.save(nguoidung);
 		});
 	}
 
 	@Override
 	public Optional<Object> deleteById(String id) {
-		return repository_NguoiDung.findById(id).map(nguoidung -> {
-			repository_NguoiDung.delete(nguoidung);
+		return nguoiDungRepository.findById(id).map(nguoidung -> {
+			nguoiDungRepository.delete(nguoidung);
 			return ResponseEntity.ok().build();
 		});
 	}
@@ -55,7 +55,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	@Override
 	public List<NguoiDung> seach(String seachString) {
 		seachString= "%"+seachString+"%";
-		return repository_NguoiDung.findByTenDangNhapLikeOrHoTenLike(seachString, seachString);
+		return nguoiDungRepository.findByTenDangNhapLikeOrHoTenLike(seachString, seachString);
 	}
 
 }

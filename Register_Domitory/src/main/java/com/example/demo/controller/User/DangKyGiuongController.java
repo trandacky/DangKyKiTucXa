@@ -22,7 +22,7 @@ import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value = "/nguoidung")
-public class Controller_DangKyGiuong {
+public class DangKyGiuongController {
 
 	
 	@Autowired

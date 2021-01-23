@@ -11,43 +11,43 @@ import com.example.demo.repository.REPOSITORY_Khu;
 import com.example.demo.service.KhuService;
 @Service
 public class KhuServiceImpl implements KhuService {
-	private final REPOSITORY_Khu repository_Khu;
+	private final REPOSITORY_Khu khuRepository;
 
 	public KhuServiceImpl(REPOSITORY_Khu repository_Khu) {
 		super();
-		this.repository_Khu = repository_Khu;
+		this.khuRepository = repository_Khu;
 	}
 
 	@Override
 	public List<Khu> findAll() {
 		// TODO Auto-generated method stub
-		return repository_Khu.findAllByOrderByIdKhuAsc();
+		return khuRepository.findAllByOrderByIdKhuAsc();
 	}
 
 	@Override
 	public Optional<Khu> findById(long id) {
 		// TODO Auto-generated method stub
-		return repository_Khu.findById(id);
+		return khuRepository.findById(id);
 	}
 
 	@Override
 	public Khu saveOne(Khu khu) {
 		// TODO Auto-generated method stub
-		return repository_Khu.save(khu);
+		return khuRepository.save(khu);
 	}
 
 	@Override
 	public Optional<Object> updateOne(Khu khu) {
-		return repository_Khu.findById(khu.getIdKhu()).map(khu2 -> {
+		return khuRepository.findById(khu.getIdKhu()).map(khu2 -> {
 			khu2 = khu;
-			return repository_Khu.save(khu2);
+			return khuRepository.save(khu2);
 		});
 	}
 
 	@Override
 	public Optional<Object> deleteOneById(long id) {
-		return repository_Khu.findById(id).map(khu2 -> {
-			repository_Khu.delete(khu2);
+		return khuRepository.findById(id).map(khu2 -> {
+			khuRepository.delete(khu2);
 			return ResponseEntity.ok().build();
 		});
 	}

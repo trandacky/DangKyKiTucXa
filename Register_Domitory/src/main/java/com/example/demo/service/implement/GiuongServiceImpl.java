@@ -12,52 +12,52 @@ import com.example.demo.service.GiuongService;
 @Service
 public class GiuongServiceImpl implements GiuongService{
 
-	private final REPOSITORY_Giuong repository_giuong;
+	private final REPOSITORY_Giuong giuongRepository;
 	
 	public GiuongServiceImpl(REPOSITORY_Giuong repository_giuong) {
 		super();
-		this.repository_giuong = repository_giuong;
+		this.giuongRepository = repository_giuong;
 	}
 
 	@Override
 	public List<Giuong> findAll() {
 		// TODO Auto-generated method stub
-		return repository_giuong.findAll();
+		return giuongRepository.findAll();
 	}
 
 	@Override
 	public Giuong saveOne(Giuong giuong) {
 		// TODO Auto-generated method stub
-		return repository_giuong.save(giuong);
+		return giuongRepository.save(giuong);
 	}
 
 	@Override
 	public Optional<Object> updateOne(Giuong giuong) {
-		return repository_giuong.findById(giuong.getIdGiuong()).map(giuong2 -> {
+		return giuongRepository.findById(giuong.getIdGiuong()).map(giuong2 -> {
 			giuong2 = giuong;
-			return repository_giuong.save(giuong2);
+			return giuongRepository.save(giuong2);
 		});
 	}
 
 	@Override
 	public Optional<Giuong> findById(long id) {
 		// TODO Auto-generated method stub
-		return repository_giuong.findById(id);
+		return giuongRepository.findById(id);
 	}
 
 	@Override
 	public Optional<Object> delete(long id) {
-		return repository_giuong.findById(id).map(giuong2 -> {
-			repository_giuong.delete(giuong2);
+		return giuongRepository.findById(id).map(giuong2 -> {
+			giuongRepository.delete(giuong2);
 			return ResponseEntity.ok().build();
 		});
 	}
 
 	@Override
 	public Optional<Object> updateTinhTrang(long idgiuong, boolean tinhtrang) {
-		return repository_giuong.findById(idgiuong).map(giuong2 -> {
+		return giuongRepository.findById(idgiuong).map(giuong2 -> {
 			giuong2.setTinhTrangGiuong(tinhtrang);
-			return repository_giuong.save(giuong2);
+			return giuongRepository.save(giuong2);
 		});
 	}
 	

@@ -15,37 +15,37 @@ import com.example.demo.service.MoDangkyService;
 public class MoDangKyServiceImpl implements MoDangkyService{
 	
 	@Autowired
-	private REPOSITORY_MoDangKy repository_modangky;
+	private REPOSITORY_MoDangKy moDangKyRepository;
 	
 	@Override
 	public List<MoDangKy> getAll() {
 		// TODO Auto-generated method stub
-		return repository_modangky.findAll();
+		return moDangKyRepository.findAll();
 	}
 
 	@Override
 	public MoDangKy setData(MoDangKy modangky) {
 		// TODO Auto-generated method stub
-		return repository_modangky.save(modangky);
+		return moDangKyRepository.save(modangky);
 	}
 
 	@Override
 	public Optional<Object> update(MoDangKy modangky) {
-		return repository_modangky.findById(modangky.getIdMoDangKy()).map(dangky -> {
+		return moDangKyRepository.findById(modangky.getIdMoDangKy()).map(dangky -> {
 			dangky = modangky;
-			return repository_modangky.save(dangky);
+			return moDangKyRepository.save(dangky);
 		});
 	}
 
 	@Override
 	public Optional<MoDangKy> getByID(long id) {
-		return repository_modangky.findById(id);
+		return moDangKyRepository.findById(id);
 	}
 
 	@Override
 	public Optional<Object> delete(long id) {
-		return repository_modangky.findById(id).map(dangky -> {
-			repository_modangky.delete(dangky);
+		return moDangKyRepository.findById(id).map(dangky -> {
+			moDangKyRepository.delete(dangky);
 			return ResponseEntity.ok().build();
 		});
 	}

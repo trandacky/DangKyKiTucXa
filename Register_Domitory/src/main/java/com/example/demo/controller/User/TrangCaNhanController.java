@@ -24,7 +24,7 @@ import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value = "/nguoidung/trangcanhan" )
-public class Controller_QuanLyTrangCaNhan {
+public class TrangCaNhanController {
 	@Autowired
 	private NguoiDungService serviceNguoiDung;
 //	@Autowired
