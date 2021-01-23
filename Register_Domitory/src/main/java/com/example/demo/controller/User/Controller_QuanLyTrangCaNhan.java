@@ -1,11 +1,10 @@
 package com.example.demo.controller.User;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,7 +46,7 @@ public class Controller_QuanLyTrangCaNhan {
 	}
 	
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
-	public String index99(Model model, HttpServletRequest request) {
+	public String index(Model model, HttpServletRequest request) {
 
 		String page = "/WEB-INF/jsp/user/QuanLyTrangCaNhan/TrangCaNhan.jsp";
 		  
@@ -58,7 +57,7 @@ public class Controller_QuanLyTrangCaNhan {
 	}
 	
 	@RequestMapping(value = { "/capnhat/{tendangnhap}" }, method = RequestMethod.GET)
-	public String index6(Model model, HttpServletRequest request, @PathVariable String tendangnhap)
+	public String capNhatTenDangNhap(Model model, HttpServletRequest request, @PathVariable String tendangnhap)
 	{
 		NguoiDung taikhoan = serviceNguoiDung.getByID(tendangnhap).get(0);
 		String page = "/WEB-INF/jsp/user/QuanLyTrangCaNhan/CapNhat.jsp";
@@ -68,7 +67,7 @@ public class Controller_QuanLyTrangCaNhan {
 		return "/user/QuanLyTrangCaNhan/CapNhat";
 	}
 	@RequestMapping(value = { "/capnhat/submit" }, method = RequestMethod.POST)
-	public String index7(Model model, HttpServletRequest request)
+	public String capNhatSubmit(Model model, HttpServletRequest request)
 	{	
 		NguoiDung nguoiDung=new NguoiDung();
 		nguoiDung.setTenDangNhap(request.getParameter("tendangnhap").trim());

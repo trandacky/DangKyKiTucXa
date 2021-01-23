@@ -17,27 +17,22 @@ import com.example.demo.entity.DangKyGiuong;
 import com.example.demo.entity.NguoiDung;
 import com.example.demo.service.SERVICE_DangKyGiuong;
 import com.example.demo.service.SERVICE_Giuong;
-import com.example.demo.service.SERVICE_Khu;
-import com.example.demo.service.SERVICE_MoDangKy;
+
 import com.example.demo.service.SERVICE_NguoiDung;
-import com.example.demo.service.SERVICE_Phong;
 
 @Controller
 @RequestMapping(value = "/nguoidung")
 public class Controller_DangKyGiuong {
 
-	@Autowired
-	private SERVICE_Khu service_Khu;
+	
 	@Autowired
 	private SERVICE_DangKyGiuong service_DangKyGiuong;
-	@Autowired
-	private SERVICE_Phong service_Phong;
+	
 	@Autowired
 	private SERVICE_Giuong service_Giuong;
 	@Autowired
 	private SERVICE_NguoiDung service_NguoiDung;
-	@Autowired
-	private SERVICE_MoDangKy service_MoDangKy;
+	
 
 	public NguoiDung getTaiKhoanDangNhap() {
 

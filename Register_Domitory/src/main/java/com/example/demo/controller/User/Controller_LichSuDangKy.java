@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.NguoiDung;
-import com.example.demo.service.SERVICE_DangKyGiuong;
+
 import com.example.demo.service.SERVICE_NguoiDung;
 
 @Controller
