@@ -41,7 +41,7 @@ public class Controller_QuanLyTrangCaNhan {
 		    username = principal.toString();
 		}
 		NguoiDung taiKhoan=new NguoiDung();
-		taiKhoan = serviceNguoiDung.getByID(username).get(0);
+		taiKhoan = serviceNguoiDung.findById(username).get(0);
 		return taiKhoan;
 	}
 	
@@ -59,7 +59,7 @@ public class Controller_QuanLyTrangCaNhan {
 	@RequestMapping(value = { "/capnhat/{tendangnhap}" }, method = RequestMethod.GET)
 	public String capNhatTenDangNhap(Model model, HttpServletRequest request, @PathVariable String tendangnhap)
 	{
-		NguoiDung taikhoan = serviceNguoiDung.getByID(tendangnhap).get(0);
+		NguoiDung taikhoan = serviceNguoiDung.findById(tendangnhap).get(0);
 		String page = "/WEB-INF/jsp/user/QuanLyTrangCaNhan/CapNhat.jsp";
 		model.addAttribute("page", page);
 		model.addAttribute("taikhoan", taikhoan);
@@ -81,7 +81,7 @@ public class Controller_QuanLyTrangCaNhan {
 		nguoiDung.setMatKhau(request.getParameter("matkhau").trim());
 		nguoiDung.setQuyen(Integer.parseInt(request.getParameter("quyen").trim()));
 		
-		serviceNguoiDung.update(nguoiDung);
+		serviceNguoiDung.updateOne(nguoiDung);
 		model.addAttribute("taikhoan", nguoiDung);
 		return "redirect:/nguoidung/trangcanhan";
 	}

@@ -7,10 +7,11 @@ import com.example.demo.entity.NguoiDung;
 
 
 public interface SERVICE_NguoiDung {
-	List<NguoiDung> getAll();
-	NguoiDung setData(NguoiDung nguoiDung);
-	Optional<Object> update(NguoiDung nguoiDung);
-	List<NguoiDung> getByID(String id);
-	Optional<Object> delete(String id);
+	List<NguoiDung> findAll();
+	NguoiDung saveOne(NguoiDung nguoiDung);
+	Optional<Object> updateOne(NguoiDung nguoiDung);
+	List<NguoiDung> findById(String id);
+	Optional<Object> deleteById(String id);
 	List<NguoiDung> seach(String seachString);
+	
 }

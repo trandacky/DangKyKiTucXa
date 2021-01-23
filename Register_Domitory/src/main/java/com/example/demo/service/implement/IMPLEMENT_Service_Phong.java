@@ -17,19 +17,19 @@ public class IMPLEMENT_Service_Phong implements SERVICE_Phong {
 private REPOSITORY_Phong repository_Phong;
 
 	@Override
-	public List<Phong> getAll() {
+	public List<Phong> findAll() {
 		// TODO Auto-generated method stub
 		return repository_Phong.findAllByOrderByIdPhongAsc();
 	}
 
 	@Override
-	public Phong setData(Phong phong) {
+	public Phong saveOne(Phong phong) {
 		// TODO Auto-generated method stub
 		return repository_Phong.save(phong);
 	}
 
 	@Override
-	public Optional<Object> update(Phong phong) {
+	public Optional<Object> updateOne(Phong phong) {
 		return repository_Phong.findById(phong.getIdPhong()).map(Phong -> {
 			Phong.setPhongSo(phong.getPhongSo());
 			Phong.setTang(phong.getTang());
@@ -39,13 +39,13 @@ private REPOSITORY_Phong repository_Phong;
 	}
 
 	@Override
-	public Optional<Phong> getByID(long id) {
+	public Optional<Phong> findById(long id) {
 		// TODO Auto-generated method stub
 		return repository_Phong.findById(id);
 	}
 
 	@Override
-	public Optional<Object> delete(long id) {
+	public Optional<Object> deleteById(long id) {
 		// TODO Auto-generated method stub
 		return repository_Phong.findById(id).map(phong -> {
 			repository_Phong.delete(phong);

@@ -44,7 +44,7 @@ public class Controller_DangKyGiuong {
 			username = principal.toString();
 		}
 		NguoiDung taiKhoan = new NguoiDung();
-		List<NguoiDung> listTaiKhoan = service_NguoiDung.getByID(username);
+		List<NguoiDung> listTaiKhoan = service_NguoiDung.findById(username);
 		if (!listTaiKhoan.isEmpty()) {
 			taiKhoan = listTaiKhoan.get(0);
 		}

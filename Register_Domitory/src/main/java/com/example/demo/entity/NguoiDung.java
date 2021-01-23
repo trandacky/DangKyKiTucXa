@@ -3,14 +3,9 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A NguoiDung.

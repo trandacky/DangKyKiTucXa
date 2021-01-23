@@ -1,17 +1,10 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A Phong.

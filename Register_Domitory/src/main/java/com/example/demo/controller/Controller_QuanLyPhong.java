@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.time.Year;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,18 +29,18 @@ public class Controller_QuanLyPhong {
 		Phong phong = new Phong();
 		
 		int idkhu=Integer.parseInt(request.getParameter("idkhu"));
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();		
+		List<Phong> listPhong = service_Khu.findById(idkhu).get().getPhongs();		
 		
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
 		long idPhong=Long.parseLong(request.getParameter("idphong"));
-		phong=service_Phong.getByID(idPhong).get();
+		phong=service_Phong.findById(idPhong).get();
 		phong.setIdPhong(idPhong);
 		phong.setPhongSo(phongSo);
 		phong.setTinhTrang(tinhTrang);
-		service_Phong.update(phong);
+		service_Phong.updateOne(phong);
 		
-		khu = service_Khu.getByID(idkhu).get();
+		khu = service_Khu.findById(idkhu).get();
 		int soTang = khu.getSoTang();
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("activekhu", "active");
@@ -53,11 +52,11 @@ public class Controller_QuanLyPhong {
 	}
 	@RequestMapping(value = { "/themphong/idkhu={idkhu}&tang={sotang}" }, method = RequestMethod.GET)
 	public String loadFormThem(Model model, HttpServletRequest request,@PathVariable long idkhu,@PathVariable long sotang) {
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
+		List<Phong> listPhong = service_Khu.findById(idkhu).get().getPhongs();
 		Khu khu = new Khu();
 		Phong phong = new Phong();
 		
-		khu = service_Khu.getByID(idkhu).get();
+		khu = service_Khu.findById(idkhu).get();
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("PhongInput", phong);
 		model.addAttribute("activekhu", "active");
@@ -70,11 +69,11 @@ public class Controller_QuanLyPhong {
 	}
 	@RequestMapping(value = { "/chon/phong={idphong}&khu={idkhu}" }, method = RequestMethod.GET)
 	public String loadFormUpdate(Model model, HttpServletRequest request,@PathVariable long idphong,@PathVariable long idkhu) {
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
+		List<Phong> listPhong = service_Khu.findById(idkhu).get().getPhongs();
 		Khu khu = new Khu();
 		Phong phong = new Phong();
-		phong=service_Phong.getByID(idphong).get();
-		khu = service_Khu.getByID(idkhu).get();
+		phong=service_Phong.findById(idphong).get();
+		khu = service_Khu.findById(idkhu).get();
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("PhongInput", phong);
 		model.addAttribute("sogiuong", phong.getGiuongs().size());
@@ -92,8 +91,8 @@ public class Controller_QuanLyPhong {
 		Phong phong = new Phong();
 		
 		int idkhu=Integer.parseInt(request.getParameter("idkhu"));
-		List<Phong> listPhong = service_Khu.getByID(idkhu).get().getPhongs();
-		khu=service_Khu.getByID(idkhu).get();
+		List<Phong> listPhong = service_Khu.findById(idkhu).get().getPhongs();
+		khu=service_Khu.findById(idkhu).get();
 		int giaTien=Integer.parseInt(request.getParameter("giaphong"));
 		int phongSo=Integer.parseInt(request.getParameter("phongso"));
 		int tinhTrang=Integer.parseInt(request.getParameter("tinhtrang"));
@@ -103,9 +102,9 @@ public class Controller_QuanLyPhong {
 		phong.setTinhTrang(tinhTrang);
 		phong.setIdKhu(khu);
 		phong.setTang(tang);
-		service_Phong.setData(phong);
+		service_Phong.saveOne(phong);
 		
-		khu = service_Khu.getByID(idkhu).get();
+		khu = service_Khu.findById(idkhu).get();
 		
 		model.addAttribute("ListPhong", listPhong);
 		model.addAttribute("activekhu", "active");
@@ -120,9 +119,9 @@ public class Controller_QuanLyPhong {
 	public String themTang(Model model, HttpServletRequest request,@PathVariable long idkhu) {
 		String back = request.getHeader("Referer");
 		Khu khu = new Khu();
-		khu = service_Khu.getByID(idkhu).get();
+		khu = service_Khu.findById(idkhu).get();
 		khu.setSoTang(khu.getSoTang()+1);
-		service_Khu.setData(khu);
+		service_Khu.saveOne(khu);
 		return "redirect:"+back;
 	}
 }
