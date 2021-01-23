@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.example.demo.entity.Phong;
 
-public interface SERVICE_Phong {
+public interface PhongService {
 	List<Phong> findAll();
 	Phong saveOne(Phong phong);
 	Optional<Object> updateOne(Phong phong);

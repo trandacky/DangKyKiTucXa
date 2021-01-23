@@ -13,40 +13,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entity.Giuong;
 import com.example.demo.entity.Khu;
 import com.example.demo.entity.Phong;
-import com.example.demo.service.SERVICE_DangKyGiuong;
-import com.example.demo.service.SERVICE_Giuong;
-import com.example.demo.service.SERVICE_Khu;
-import com.example.demo.service.SERVICE_Phong;
+import com.example.demo.service.DangKyGiuongService;
+import com.example.demo.service.GiuongService;
+import com.example.demo.service.KhuService;
+import com.example.demo.service.PhongService;
 
 @Controller
 @RequestMapping(value = "/quanly" )
-public class Controller_QuanLyGiuong {
+public class QuanLyGiuongController {
 	
 	@Autowired
-	private SERVICE_DangKyGiuong service_DangKyGiuong;
+	private DangKyGiuongService service_DangKyGiuong;
 	@Autowired
-	private SERVICE_Giuong service_Giuong;
+	private GiuongService service_Giuong;
 	@Autowired
-	private SERVICE_Khu service_Khu;
+	private KhuService service_Khu;
 	@Autowired
-	private SERVICE_Phong service_Phong;
+	private PhongService service_Phong;
 	
 	@RequestMapping(value = { "","/" }, method = RequestMethod.GET)
-	public String index2(Model model) {
-		List<Giuong> giuong = service_Giuong.getAll();
+	public String loadTrangQuangLyGiuong(Model model) {
+		List<Giuong> giuong = service_Giuong.findAll();
 		model.addAttribute("activegiuong","active");
 		model.addAttribute("listGiuong",giuong);
 		return "/admin/QuanLyGiuong";
 	}
 	@RequestMapping(value = {"/khu/phong/chon/capnhat" }, method = RequestMethod.POST)
-	public String index3(Model model, HttpServletRequest request) {
+	public String capNhatGiuong(Model model, HttpServletRequest request) {
 		String back = request.getHeader("Referer");
-		 
-	
-			
 		int idkhu = Integer.parseInt(request.getParameter("idkhu"));
-
-		
 		if(request.getParameter("tinhtrang").equals("3")) {
 			boolean tinhtrang = false; 
 			int idgiuong = Integer.parseInt(request.getParameter("idgiuong"));	
@@ -101,7 +96,7 @@ public class Controller_QuanLyGiuong {
 		}
 		giuong.setViTriGiuong(request.getParameter("vi-tri-giuong"));
 		giuong.setIdPhong(phong);
-		service_Giuong.setData(giuong);
+		service_Giuong.saveOne(giuong);
 		return "redirect:"+back;
 	}
 	

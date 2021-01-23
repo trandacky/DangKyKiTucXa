@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Khu;
 import com.example.demo.repository.REPOSITORY_Khu;
-import com.example.demo.service.SERVICE_Khu;
+import com.example.demo.service.KhuService;
 @Service
-public class IMPLEMENT_Service_Khu implements SERVICE_Khu {
+public class KhuServiceImpl implements KhuService {
 	private final REPOSITORY_Khu repository_Khu;
 
-	public IMPLEMENT_Service_Khu(REPOSITORY_Khu repository_Khu) {
+	public KhuServiceImpl(REPOSITORY_Khu repository_Khu) {
 		super();
 		this.repository_Khu = repository_Khu;
 	}

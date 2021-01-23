@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.DangKyGiuong;
 import com.example.demo.entity.NguoiDung;
-import com.example.demo.service.SERVICE_DangKyGiuong;
-import com.example.demo.service.SERVICE_Giuong;
+import com.example.demo.service.DangKyGiuongService;
+import com.example.demo.service.GiuongService;
 
-import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value = "/nguoidung")
@@ -26,12 +26,12 @@ public class Controller_DangKyGiuong {
 
 	
 	@Autowired
-	private SERVICE_DangKyGiuong service_DangKyGiuong;
+	private DangKyGiuongService service_DangKyGiuong;
 	
 	@Autowired
-	private SERVICE_Giuong service_Giuong;
+	private GiuongService service_Giuong;
 	@Autowired
-	private SERVICE_NguoiDung service_NguoiDung;
+	private NguoiDungService service_NguoiDung;
 	
 
 	public NguoiDung getTaiKhoanDangNhap() {
@@ -59,7 +59,7 @@ public class Controller_DangKyGiuong {
 			dangKyGiuong.setTinhTrangDangKy(3);
 			service_DangKyGiuong.update(dangKyGiuong);
 			dangKyGiuong= new DangKyGiuong();
-			dangKyGiuong.setIdGiuong(service_Giuong.getByID(idgiuong).get());
+			dangKyGiuong.setIdGiuong(service_Giuong.findById(idgiuong).get());
 			dangKyGiuong.setTenDangNhap(getTaiKhoanDangNhap());
 			dangKyGiuong.setTinhTrangDangKy(2);
 			service_DangKyGiuong.setData(dangKyGiuong);
@@ -67,7 +67,7 @@ public class Controller_DangKyGiuong {
 		else
 		{
 			DangKyGiuong dangKyGiuong= new DangKyGiuong();
-			dangKyGiuong.setIdGiuong(service_Giuong.getByID(idgiuong).get());
+			dangKyGiuong.setIdGiuong(service_Giuong.findById(idgiuong).get());
 			dangKyGiuong.setTenDangNhap(getTaiKhoanDangNhap());
 			dangKyGiuong.setTinhTrangDangKy(2);
 			service_DangKyGiuong.setData(dangKyGiuong);

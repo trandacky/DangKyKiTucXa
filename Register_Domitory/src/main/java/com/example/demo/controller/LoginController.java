@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/quanly/quangcao")
-public class Controller_QuangCao {
-	@RequestMapping(value={"",""}, method=RequestMethod.GET)
-	private String quangCao(Model model)
+public class LoginController {
+	
+	@RequestMapping(value = "/loginfail", method = RequestMethod.GET)
+	public String loginFail(Model model)
 	{
-		model.addAttribute("activequangcao","active");
-		return "/admin/quangcao";
+			
+		return "redirect:/index";
 	}
+	
+
 }

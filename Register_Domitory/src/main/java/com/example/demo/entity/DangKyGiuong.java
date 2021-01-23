@@ -1,10 +1,5 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Year;
 import java.util.Date;
 
 import javax.persistence.*;

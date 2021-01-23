@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.Khu;
 import com.example.demo.entity.Phong;
-import com.example.demo.service.SERVICE_Khu;
+import com.example.demo.service.KhuService;
 
 @Controller
 @RequestMapping(value = "/quanly/khu")
-public class Controller_QuanLyKhu {
+public class QuanLyKhuController {
 	@Autowired
-	private SERVICE_Khu service_Khu;
+	private KhuService service_Khu;
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public String hienThiKhu(Model model) {

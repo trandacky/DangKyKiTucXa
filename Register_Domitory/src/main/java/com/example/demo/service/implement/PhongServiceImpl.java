@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Phong;
 import com.example.demo.repository.REPOSITORY_Phong;
-import com.example.demo.service.SERVICE_Phong;
+import com.example.demo.service.PhongService;
 
 @Service
-public class IMPLEMENT_Service_Phong implements SERVICE_Phong {
+public class PhongServiceImpl implements PhongService {
 	@Autowired
 private REPOSITORY_Phong repository_Phong;
 

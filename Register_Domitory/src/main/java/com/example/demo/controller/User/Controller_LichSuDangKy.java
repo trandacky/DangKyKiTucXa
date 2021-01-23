@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.NguoiDung;
 
-import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value="/nguoidung")
 public class Controller_LichSuDangKy {
 	@Autowired
-	private SERVICE_NguoiDung service_NguoiDung;
+	private NguoiDungService service_NguoiDung;
 	@RequestMapping(value="/lichsu")
 	private String xemLichSuDangKy(Model model)
 	{

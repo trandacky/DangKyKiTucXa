@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.entity.DangKyGiuong;
 
 
-public interface SERVICE_DangKyGiuong {
+public interface DangKyGiuongService {
 	List<DangKyGiuong> getAll();
 	DangKyGiuong setData(DangKyGiuong dangKyGiuong);
 	Optional<Object> update(DangKyGiuong dangKyGiuong);

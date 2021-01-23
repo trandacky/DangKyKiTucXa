@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import com.example.demo.entity.NguoiDung;
-import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.NguoiDungService;
 
 
 
@@ -26,7 +26,7 @@ import com.example.demo.service.SERVICE_NguoiDung;
 @RequestMapping(value = "/nguoidung/trangcanhan" )
 public class Controller_QuanLyTrangCaNhan {
 	@Autowired
-	private SERVICE_NguoiDung serviceNguoiDung;
+	private NguoiDungService serviceNguoiDung;
 //	@Autowired
 //	private TaiKhoanService taiKhoanService;
 	

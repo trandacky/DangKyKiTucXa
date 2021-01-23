@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.example.demo.entity.Khu;
 
 
-public interface SERVICE_Khu {
+public interface KhuService {
 	List<Khu> findAll();
 	Khu saveOne(Khu khu);
 	Optional<Object> updateOne(Khu khu);

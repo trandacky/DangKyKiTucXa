@@ -8,31 +8,31 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Giuong;
 import com.example.demo.repository.REPOSITORY_Giuong;
-import com.example.demo.service.SERVICE_Giuong;
+import com.example.demo.service.GiuongService;
 @Service
-public class IMPLEMENT_Service_Giuong implements SERVICE_Giuong{
+public class GiuongServiceImpl implements GiuongService{
 
 	private final REPOSITORY_Giuong repository_giuong;
 	
-	public IMPLEMENT_Service_Giuong(REPOSITORY_Giuong repository_giuong) {
+	public GiuongServiceImpl(REPOSITORY_Giuong repository_giuong) {
 		super();
 		this.repository_giuong = repository_giuong;
 	}
 
 	@Override
-	public List<Giuong> getAll() {
+	public List<Giuong> findAll() {
 		// TODO Auto-generated method stub
 		return repository_giuong.findAll();
 	}
 
 	@Override
-	public Giuong setData(Giuong giuong) {
+	public Giuong saveOne(Giuong giuong) {
 		// TODO Auto-generated method stub
 		return repository_giuong.save(giuong);
 	}
 
 	@Override
-	public Optional<Object> update(Giuong giuong) {
+	public Optional<Object> updateOne(Giuong giuong) {
 		return repository_giuong.findById(giuong.getIdGiuong()).map(giuong2 -> {
 			giuong2 = giuong;
 			return repository_giuong.save(giuong2);
@@ -40,7 +40,7 @@ public class IMPLEMENT_Service_Giuong implements SERVICE_Giuong{
 	}
 
 	@Override
-	public Optional<Giuong> getByID(long id) {
+	public Optional<Giuong> findById(long id) {
 		// TODO Auto-generated method stub
 		return repository_giuong.findById(id);
 	}

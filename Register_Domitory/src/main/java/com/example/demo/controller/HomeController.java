@@ -16,26 +16,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entity.Giuong;
 import com.example.demo.entity.Khu;
 import com.example.demo.entity.NguoiDung;
-import com.example.demo.service.SERVICE_DangKyGiuong;
-import com.example.demo.service.SERVICE_Khu;
-import com.example.demo.service.SERVICE_MoDangKy;
-import com.example.demo.service.SERVICE_NguoiDung;
-import com.example.demo.service.SERVICE_Phong;
+import com.example.demo.service.DangKyGiuongService;
+import com.example.demo.service.KhuService;
+import com.example.demo.service.MoDangkyService;
+import com.example.demo.service.NguoiDungService;
+import com.example.demo.service.PhongService;
 
 @Controller
 
-public class Controller_Home {
+public class HomeController {
 
 	@Autowired
-	private SERVICE_Khu service_Khu;
+	private KhuService service_Khu;
 	@Autowired
-	private SERVICE_DangKyGiuong service_DangKyGiuong;
+	private DangKyGiuongService service_DangKyGiuong;
 	@Autowired
-	private SERVICE_Phong service_Phong;
+	private PhongService service_Phong;
 	@Autowired
-	private SERVICE_NguoiDung service_NguoiDung;
+	private NguoiDungService service_NguoiDung;
 	@Autowired
-	private SERVICE_MoDangKy service_MoDangKy;
+	private MoDangkyService service_MoDangKy;
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String login(Model model) {

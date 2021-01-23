@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.demo.entity.NguoiDung;
-import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.NguoiDungService;
 
 @Controller
 @RequestMapping(value = "/quanly/taikhoan")
-public class Controller_QuanLyTaiKhoan {
+public class QuanLyTaiKhoanController {
 	@Autowired
-	private SERVICE_NguoiDung service_NguoiDung;
+	private NguoiDungService service_NguoiDung;
 
 	private NguoiDung getTaiKhoanDangNhap()
 	{

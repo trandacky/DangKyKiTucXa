@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.NguoiDung;
 import com.example.demo.repository.REPOSITORY_NguoiDung;
-import com.example.demo.service.SERVICE_NguoiDung;
+import com.example.demo.service.NguoiDungService;
 @Service
-public class IMPLEMENT_Service_NguoiDung implements SERVICE_NguoiDung {
+public class NguoiDungServiceImpl implements NguoiDungService {
 	private final REPOSITORY_NguoiDung repository_NguoiDung;
 
-	public IMPLEMENT_Service_NguoiDung(REPOSITORY_NguoiDung repository_NguoiDung) {
+	public NguoiDungServiceImpl(REPOSITORY_NguoiDung repository_NguoiDung) {
 		super();
 		this.repository_NguoiDung = repository_NguoiDung;
 	}
