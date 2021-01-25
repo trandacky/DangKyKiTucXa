@@ -46,7 +46,7 @@ public class TrangCaNhanController {
 	}
 	
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
-	public String index(Model model, HttpServletRequest request) {
+	public String loadFormTrangCaNhan(Model model, HttpServletRequest request) {
 
 		String page = "/WEB-INF/jsp/user/QuanLyTrangCaNhan/TrangCaNhan.jsp";
 		  

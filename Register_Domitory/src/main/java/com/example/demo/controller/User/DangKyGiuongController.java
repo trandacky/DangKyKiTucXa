@@ -52,7 +52,7 @@ public class DangKyGiuongController {
 	}
 
 	@RequestMapping(value = "/dangky/idgiuong={idgiuong}", method = RequestMethod.POST)
-	private String dangKyGiuong(Model model, HttpServletRequest request, @PathVariable long idgiuong) {
+	public String dangKyGiuong(Model model, HttpServletRequest request, @PathVariable long idgiuong) {
 		if (request.getParameter("giuongdadangky") != "") {
 			DangKyGiuong dangKyGiuong = service_DangKyGiuong
 					.getByID(Integer.parseInt( request.getParameter("giuongdadangky"))).get();

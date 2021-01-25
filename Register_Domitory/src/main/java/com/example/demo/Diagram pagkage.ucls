@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="com.example.demo.controller" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="194" x="335" y="36"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="com.example.demo.controller.User" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/controller/User" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="697" y="114"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="com.example.demo.config" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/config" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="174" x="285" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="com.example.demo.entity" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/entity" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="170" x="47" y="133"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="com.example.demo.service.implement" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/service/implement" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="173" y="256"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="com.example.demo.service" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="499" y="264"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="com.example.demo.util" project="Register_Domitory" 
+    file="/Register_Domitory/src/main/java/com/example/demo/util" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="671" y="186"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
